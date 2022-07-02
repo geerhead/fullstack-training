@@ -1,0 +1,6 @@
+C:\Projects\CSharpIntermediate\Methods\Methods\bin\Debug\Methods.exe.config
+C:\Projects\CSharpIntermediate\Methods\Methods\bin\Debug\Methods.exe
+C:\Projects\CSharpIntermediate\Methods\Methods\bin\Debug\Methods.pdb
+C:\Projects\CSharpIntermediate\Methods\Methods\obj\Debug\Methods.csprojResolveAssemblyReference.cache
+C:\Projects\CSharpIntermediate\Methods\Methods\obj\Debug\Methods.exe
+C:\Projects\CSharpIntermediate\Methods\Methods\obj\Debug\Methods.pdb

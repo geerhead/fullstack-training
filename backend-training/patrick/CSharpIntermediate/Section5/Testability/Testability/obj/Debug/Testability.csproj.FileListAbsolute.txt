@@ -1,0 +1,6 @@
+C:\Projects\CSharpIntermediate\Section5\Testability\Testability\bin\Debug\Testability.exe.config
+C:\Projects\CSharpIntermediate\Section5\Testability\Testability\obj\Debug\Testability.csprojResolveAssemblyReference.cache
+C:\Projects\CSharpIntermediate\Section5\Testability\Testability\bin\Debug\Testability.exe
+C:\Projects\CSharpIntermediate\Section5\Testability\Testability\bin\Debug\Testability.pdb
+C:\Projects\CSharpIntermediate\Section5\Testability\Testability\obj\Debug\Testability.exe
+C:\Projects\CSharpIntermediate\Section5\Testability\Testability\obj\Debug\Testability.pdb

@@ -1,0 +1,6 @@
+C:\Projects\CSharpIntermediate\Section1\Classes\Classes\bin\Debug\Classes.exe.config
+C:\Projects\CSharpIntermediate\Section1\Classes\Classes\bin\Debug\Classes.exe
+C:\Projects\CSharpIntermediate\Section1\Classes\Classes\bin\Debug\Classes.pdb
+C:\Projects\CSharpIntermediate\Section1\Classes\Classes\obj\Debug\Classes.csprojResolveAssemblyReference.cache
+C:\Projects\CSharpIntermediate\Section1\Classes\Classes\obj\Debug\Classes.exe
+C:\Projects\CSharpIntermediate\Section1\Classes\Classes\obj\Debug\Classes.pdb

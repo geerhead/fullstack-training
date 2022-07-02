@@ -1,0 +1,6 @@
+C:\Projects\CSharpIntermediate\Section3\Casting\Casting\bin\Debug\Casting.exe.config
+C:\Projects\CSharpIntermediate\Section3\Casting\Casting\bin\Debug\Casting.exe
+C:\Projects\CSharpIntermediate\Section3\Casting\Casting\bin\Debug\Casting.pdb
+C:\Projects\CSharpIntermediate\Section3\Casting\Casting\obj\Debug\Casting.csprojResolveAssemblyReference.cache
+C:\Projects\CSharpIntermediate\Section3\Casting\Casting\obj\Debug\Casting.exe
+C:\Projects\CSharpIntermediate\Section3\Casting\Casting\obj\Debug\Casting.pdb

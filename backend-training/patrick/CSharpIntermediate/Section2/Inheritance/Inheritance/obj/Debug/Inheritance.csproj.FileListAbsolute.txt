@@ -1,0 +1,6 @@
+C:\Projects\CSharpIntermediate\Section2\Inheritance\Inheritance\bin\Debug\Inheritance.exe.config
+C:\Projects\CSharpIntermediate\Section2\Inheritance\Inheritance\bin\Debug\Inheritance.exe
+C:\Projects\CSharpIntermediate\Section2\Inheritance\Inheritance\bin\Debug\Inheritance.pdb
+C:\Projects\CSharpIntermediate\Section2\Inheritance\Inheritance\obj\Debug\Inheritance.csprojResolveAssemblyReference.cache
+C:\Projects\CSharpIntermediate\Section2\Inheritance\Inheritance\obj\Debug\Inheritance.exe
+C:\Projects\CSharpIntermediate\Section2\Inheritance\Inheritance\obj\Debug\Inheritance.pdb

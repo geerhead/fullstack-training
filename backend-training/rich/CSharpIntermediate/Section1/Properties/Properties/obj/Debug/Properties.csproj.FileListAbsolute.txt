@@ -1,0 +1,6 @@
+C:\Projects\CSharpIntermediate\Properties\Properties\bin\Debug\Properties.exe.config
+C:\Projects\CSharpIntermediate\Properties\Properties\bin\Debug\Properties.exe
+C:\Projects\CSharpIntermediate\Properties\Properties\bin\Debug\Properties.pdb
+C:\Projects\CSharpIntermediate\Properties\Properties\obj\Debug\Properties.csprojResolveAssemblyReference.cache
+C:\Projects\CSharpIntermediate\Properties\Properties\obj\Debug\Properties.exe
+C:\Projects\CSharpIntermediate\Properties\Properties\obj\Debug\Properties.pdb

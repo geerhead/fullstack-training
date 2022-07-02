@@ -1,0 +1,6 @@
+C:\Projects\CSharpIntermediate\Section3\Constructors\Constructors\bin\Debug\Constructors.exe.config
+C:\Projects\CSharpIntermediate\Section3\Constructors\Constructors\bin\Debug\Constructors.exe
+C:\Projects\CSharpIntermediate\Section3\Constructors\Constructors\bin\Debug\Constructors.pdb
+C:\Projects\CSharpIntermediate\Section3\Constructors\Constructors\obj\Debug\Constructors.csprojResolveAssemblyReference.cache
+C:\Projects\CSharpIntermediate\Section3\Constructors\Constructors\obj\Debug\Constructors.exe
+C:\Projects\CSharpIntermediate\Section3\Constructors\Constructors\obj\Debug\Constructors.pdb

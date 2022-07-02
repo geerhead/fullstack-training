@@ -1,0 +1,247 @@
+Activity Details snippets
+
+=====
+ActivityDetailedHeader.tsx
+=====
+import { observer } from 'mobx-react-lite';
+import React from 'react'
+import {Button, Header, Item, Segment, Image} from 'semantic-ui-react'
+import {Activity} from "../../../app/models/activity";
+
+const activityImageStyle = {
+    filter: 'brightness(30%)'
+};
+
+const activityImageTextStyle = {
+    position: 'absolute',
+    bottom: '5%',
+    left: '5%',
+    width: '100%',
+    height: 'auto',
+    color: 'white'
+};
+
+interface Props {
+    activity: Activity
+}
+
+export default observer (function ActivityDetailedHeader({activity}: Props) {
+    return (
+        <Segment.Group>
+            <Segment basic attached='top' style={{padding: '0'}}>
+                <Image src={`/assets/categoryImages/${activity.category}.jpg`} fluid style={activityImageStyle}/>
+                <Segment style={activityImageTextStyle} basic>
+                    <Item.Group>
+                        <Item>
+                            <Item.Content>
+                                <Header
+                                    size='huge'
+                                    content={activity.title}
+                                    style={{color: 'white'}}
+                                />
+                                <p>{activity.date}</p>
+                                <p>
+                                    Hosted by <strong>Bob</strong>
+                                </p>
+                            </Item.Content>
+                        </Item>
+                    </Item.Group>
+                </Segment>
+            </Segment>
+            <Segment clearing attached='bottom'>
+                <Button color='teal'>Join Activity</Button>
+                <Button>Cancel attendance</Button>
+                <Button color='orange' floated='right'>
+                    Manage Event
+                </Button>
+            </Segment>
+        </Segment.Group>
+    )
+})
+
+
+=====
+ActivityDetailedInfo.tsx
+=====
+
+import { observer } from 'mobx-react-lite';
+import React from 'react'
+import {Segment, Grid, Icon} from 'semantic-ui-react'
+import {Activity} from "../../../app/models/activity";
+
+interface Props {
+    activity: Activity
+}
+
+export default observer(function ActivityDetailedInfo({activity}: Props) {
+    return (
+        <Segment.Group>
+            <Segment attached='top'>
+                <Grid>
+                    <Grid.Column width={1}>
+                        <Icon size='large' color='teal' name='info'/>
+                    </Grid.Column>
+                    <Grid.Column width={15}>
+                        <p>{activity.description}</p>
+                    </Grid.Column>
+                </Grid>
+            </Segment>
+            <Segment attached>
+                <Grid verticalAlign='middle'>
+                    <Grid.Column width={1}>
+                        <Icon name='calendar' size='large' color='teal'/>
+                    </Grid.Column>
+                    <Grid.Column width={15}>
+            <span>
+              {activity.date}
+            </span>
+                    </Grid.Column>
+                </Grid>
+            </Segment>
+            <Segment attached>
+                <Grid verticalAlign='middle'>
+                    <Grid.Column width={1}>
+                        <Icon name='marker' size='large' color='teal'/>
+                    </Grid.Column>
+                    <Grid.Column width={11}>
+                        <span>{activity.venue}, {activity.city}</span>
+                    </Grid.Column>
+                </Grid>
+            </Segment>
+        </Segment.Group>
+    )
+})
+
+=====
+ActivityDetailedChat.tsx
+=====
+import { observer } from 'mobx-react-lite'
+import React from 'react'
+import {Segment, Header, Comment, Form, Button} from 'semantic-ui-react'
+
+export default observer(function ActivityDetailedChat() {
+    return (
+        <>
+            <Segment
+                textAlign='center'
+                attached='top'
+                inverted
+                color='teal'
+                style={{border: 'none'}}
+            >
+                <Header>Chat about this event</Header>
+            </Segment>
+            <Segment attached>
+                <Comment.Group>
+                    <Comment>
+                        <Comment.Avatar src='/assets/user.png'/>
+                        <Comment.Content>
+                            <Comment.Author as='a'>Matt</Comment.Author>
+                            <Comment.Metadata>
+                                <div>Today at 5:42PM</div>
+                            </Comment.Metadata>
+                            <Comment.Text>How artistic!</Comment.Text>
+                            <Comment.Actions>
+                                <Comment.Action>Reply</Comment.Action>
+                            </Comment.Actions>
+                        </Comment.Content>
+                    </Comment>
+
+                    <Comment>
+                        <Comment.Avatar src='/assets/user.png'/>
+                        <Comment.Content>
+                            <Comment.Author as='a'>Joe Henderson</Comment.Author>
+                            <Comment.Metadata>
+                                <div>5 days ago</div>
+                            </Comment.Metadata>
+                            <Comment.Text>Dude, this is awesome. Thanks so much</Comment.Text>
+                            <Comment.Actions>
+                                <Comment.Action>Reply</Comment.Action>
+                            </Comment.Actions>
+                        </Comment.Content>
+                    </Comment>
+
+                    <Form reply>
+                        <Form.TextArea/>
+                        <Button
+                            content='Add Reply'
+                            labelPosition='left'
+                            icon='edit'
+                            primary
+                        />
+                    </Form>
+                </Comment.Group>
+            </Segment>
+        </>
+
+    )
+})
+
+=====
+ActivityDetailedSidebar.tsx
+=====
+import React from 'react'
+import { Segment, List, Label, Item, Image } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
+
+export default observer(function ActivityDetailedSidebar () {
+    return (
+        <>
+            <Segment
+                textAlign='center'
+                style={{ border: 'none' }}
+                attached='top'
+                secondary
+                inverted
+                color='teal'
+            >
+                3 People Going
+            </Segment>
+            <Segment attached>
+                <List relaxed divided>
+                    <Item style={{ position: 'relative' }}>
+                        <Label
+                            style={{ position: 'absolute' }}
+                            color='orange'
+                            ribbon='right'
+                        >
+                            Host
+                        </Label>
+                        <Image size='tiny' src={'/assets/user.png'} />
+                        <Item.Content verticalAlign='middle'>
+                            <Item.Header as='h3'>
+                                <Link to={`#`}>Bob</Link>
+                            </Item.Header>
+                            <Item.Extra style={{ color: 'orange' }}>Following</Item.Extra>
+                        </Item.Content>
+                    </Item>
+
+                    <Item style={{ position: 'relative' }}>
+                        <Image size='tiny' src={'/assets/user.png'} />
+                        <Item.Content verticalAlign='middle'>
+                            <Item.Header as='h3'>
+                                <Link to={`#`}>Tom</Link>
+                            </Item.Header>
+                            <Item.Extra style={{ color: 'orange' }}>Following</Item.Extra>
+                        </Item.Content>
+                    </Item>
+
+                    <Item style={{ position: 'relative' }}>
+                        <Image size='tiny' src={'/assets/user.png'} />
+                        <Item.Content verticalAlign='middle'>
+                            <Item.Header as='h3'>
+                                <Link to={`#`}>Sally</Link>
+                            </Item.Header>
+                        </Item.Content>
+                    </Item>
+                </List>
+            </Segment>
+        </>
+
+    )
+})
+
+
+
+

@@ -1,0 +1,3464 @@
+{
+	"info": {
+		"_postman_id": "c618de6b-be2a-42bb-9913-524192e29067",
+		"name": "Reactivities",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Module 2",
+			"item": [
+				{
+					"name": "Get Weather Forecast",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/weatherforecast",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"weatherforecast"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/activities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/activities/ebe6673d-44ce-493c-867d-e1e91c033be9",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"ebe6673d-44ce-493c-867d-e1e91c033be9"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Module 4",
+			"item": [
+				{
+					"name": "Get Activities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/activities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/activities/692ebbe6-a5ba-4e9d-9224-a8472c17b179",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"692ebbe6-a5ba-4e9d-9224-a8472c17b179"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Activity",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1836fa25-a52d-403e-bdac-8c493cf85acd",
+								"exec": [
+									"var moment = require(\"moment\");\r",
+									"\r",
+									"pm.environment.set('activityDate', moment().add(14, 'days').toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"{{$guid}}\",\n\t\"title\": \"Test Create Activity\",\n\t\"description\": \"Description of the test event\",\n\t\"category\": \"Culture\",\n\t\"date\": \"{{activityDate}}\",\n\t\"city\": \"London\",\n\t\"venue\": \"Tower of London\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/activities/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Activity",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f53d29ef-3f33-4275-bb03-f5681954fdf2",
+								"exec": [
+									"var moment = require(\"moment\");\r",
+									"\r",
+									"pm.environment.set('activityDate', moment().add(14, 'days').toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Test Create Activity updated 2\",\n\t\"description\": \"Description of the test event updated\",\n\t\"category\": \"Culture\",\n\t\"date\": \"{{activityDate}}\",\n\t\"city\": \"London\",\n\t\"venue\": \"Tower of London updated\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/activities/d9aaffee-d5b4-4d74-b109-8b324a9deede",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"d9aaffee-d5b4-4d74-b109-8b324a9deede"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Activity",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "cfd56616-e237-4208-8412-77511d969587",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/activities/d9aaffee-d5b4-4d74-b109-8b324a9deede",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"d9aaffee-d5b4-4d74-b109-8b324a9deede"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Module 10",
+			"item": [
+				{
+					"name": "Get non existant activity",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/activities/d51e33de-105b-4549-96d9-8ba2c7b05a30",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"d51e33de-105b-4549-96d9-8ba2c7b05a30"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Empty Activity",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{url}}/api/activities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit an Activity missing fields",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/activities/795fead9-2476-4995-97e6-da5ee20b95f5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"795fead9-2476-4995-97e6-da5ee20b95f5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit an Activity correct",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "14c3e195-7c3b-4013-933c-e48e87606c62",
+								"exec": [
+									"var moment = require(\"moment\");\r",
+									"\r",
+									"pm.environment.set('activityDate', moment().add(14, 'days').toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Test Create Activity updated\",\n\t\"description\": \"Description of the test event\",\n\t\"category\": \"Culture\",\n\t\"date\": \"{{activityDate}}\",\n\t\"city\": \"London\",\n\t\"venue\": \"Tower of London\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/activities/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Values 404 example",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/values/666",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"values",
+								"666"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete non existent activity",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/activities/d51e33de-105b-4549-96d9-8ba2c7b05a30",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"d51e33de-105b-4549-96d9-8ba2c7b05a30"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Module 12",
+			"item": [
+				{
+					"name": "Get Activites Test Base Controller no auth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/activities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user successful",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"bob@test.com\",\n\t\"password\": \"Pa$$w0rd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user validation error",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"bob@test.com\",\n\t\"password\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user bad password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"bob@test.com\",\n\t\"password\": \"badpassword\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user bad email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"fake@test.com\",\n\t\"password\": \"Pa$$w0rd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activites no auth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/activities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activity no auth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/activities/692ebbe6-a5ba-4e9d-9224-a8472c17b179",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"692ebbe6-a5ba-4e9d-9224-a8472c17b179"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activity with auth",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImJvYiIsIm5hbWVpZCI6ImY3YmMxZWY3LThhNGMtNDU0NS1hZDI1LTgzMWVlYTJjOGQyYyIsImVtYWlsIjoiYm9iQHRlc3QuY29tIiwibmJmIjoxNjA1MTU1NTg5LCJleHAiOjE2MDU3NjAzODksImlhdCI6MTYwNTE1NTU4OX0.P8-5SzrYmXzrcknaj2RMUG5CCaYGhOrifzx-CvcxB1z8iTq25g1h6zEur6T0pdvlOfswms-L-wB7MQOu8CJnjQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/activities/692ebbe6-a5ba-4e9d-9224-a8472c17b179",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"692ebbe6-a5ba-4e9d-9224-a8472c17b179"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register user successfull",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"jim2@test.com\",\n\t\"username\": \"jim2\",\n\t\"displayName\": \"James\",\n\t\"password\": \"Pa$$w0rd\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/account/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register user validation error",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"sally@test.com\",\n\t\"username\": \"sally\",\n\t\"password\": \"Pa$$w0rd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register user duplicate email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"bob@test.com\",\n\t\"username\": \"fakebob\",\n\t\"displayName\": \"Bob\",\n\t\"password\": \"Pa$$w0rd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register user duplicate username",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"fakebob@test.com\",\n\t\"username\": \"bob\",\n\t\"displayName\": \"FakeBob\",\n\t\"password\": \"Pa$$w0rd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register user weak password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"letmein@test.com\",\n\t\"username\": \"LetMeIn\",\n\t\"displayName\": \"Let Me In\",\n\t\"password\": \"letmein\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get current user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImJvYiIsIm5hbWVpZCI6ImY3YmMxZWY3LThhNGMtNDU0NS1hZDI1LTgzMWVlYTJjOGQyYyIsImVtYWlsIjoiYm9iQHRlc3QuY29tIiwibmJmIjoxNjA1MTU1ODc5LCJleHAiOjE2MDU3NjA2NzksImlhdCI6MTYwNTE1NTg3OX0.gbmrzEIllx2ds2vPj5N5-zwyYsil_ttF2PsxleFvHQ5FIwOfxJuWQolojBvAgaIJEsV9kJClQJBq7gyY32LSdQ"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Module 14",
+			"item": [
+				{
+					"name": "Login as bob and save token to env",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "126a02f4-2a92-41b7-b403-1b264f7b7709",
+								"exec": [
+									"const user = pm.response.json();",
+									"",
+									"pm.test(\"Has properties\", function () {",
+									"    pm.expect(user).to.have.property('displayName');",
+									"    pm.expect(user).to.have.property('username');",
+									"    pm.expect(user).to.have.property('image');",
+									"    pm.expect(user).to.have.property('token');",
+									"});",
+									"",
+									"if (pm.test(\"Has properties\")) {",
+									"    pm.globals.set('token', user.token);",
+									"}",
+									"",
+									"pm.test(\"Global token has been set\", function() {",
+									"    var token = pm.globals.get('token');",
+									"    pm.expect(token).to.eql(user.token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"bob@test.com\",\n\t\"password\": \"Pa$$w0rd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Activity current user host",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c2610998-e3f5-4888-991e-234c3295d97e",
+								"exec": [
+									"// response to be 200",
+									"pm.test(\"response is ok\", function() {",
+									"    pm.response.to.have.status(200)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a894b891-0b19-44bc-966e-f363d3305f86",
+								"exec": [
+									"var moment = require(\"moment\");\r",
+									"\r",
+									"pm.environment.set('activityDate', moment().add(14, 'days').toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"{{$guid}}\",\n\t\"title\": \"Test event with bob as host\",\n\t\"description\": \"Description of the test event\",\n\t\"category\":\"drinks\",\n\t\"date\": \"{{activityDate}}\",\n\t\"city\": \"London\",\n\t\"venue\": \"London venue\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/activities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f917b2cf-059e-4369-a63d-eba5dfdef236",
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"// response to be 200",
+									"pm.test(\"response is 200\", function() {",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"has all properties\", function() {",
+									"    pm.expect(data[0]).to.have.property('id');",
+									"    pm.expect(data[0]).to.have.property('title');",
+									"    pm.expect(data[0]).to.have.property('description');",
+									"    pm.expect(data[0]).to.have.property('date');",
+									"    pm.expect(data[0]).to.have.property('city');",
+									"    pm.expect(data[0]).to.have.property('venue');",
+									"    pm.expect(data[0]).to.have.property('attendees');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/activities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activity Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6d26a3c-af07-4367-b129-27e3a169e421",
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"// response to be 200",
+									"pm.test(\"response is created\", function() {",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"has all properties\", function() {",
+									"    pm.expect(data).to.have.property('id');",
+									"    pm.expect(data).to.have.property('title');",
+									"    pm.expect(data).to.have.property('description');",
+									"    pm.expect(data).to.have.property('date');",
+									"    pm.expect(data).to.have.property('city');",
+									"    pm.expect(data).to.have.property('venue');",
+									"    pm.expect(data).to.have.property('attendees');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/activities/5bbff03b-cfc6-4dc4-b116-cd71b87f80d4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"5bbff03b-cfc6-4dc4-b116-cd71b87f80d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add attendance as bob",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "de53a1df-3be6-43ca-8182-26b81744bf14",
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"// response to be 200",
+									"pm.test(\"response is 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/activities/01297c18-3be9-4bf6-95ce-318140608a05/attend",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"01297c18-3be9-4bf6-95ce-318140608a05",
+								"attend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove attendance for user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d337fe43-57db-4dff-a523-311cedac3435",
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"// response to be 200",
+									"pm.test(\"response is 200\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/activities/a172ad68-5022-40f5-a2d2-801020f7839a/attend",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"a172ad68-5022-40f5-a2d2-801020f7839a",
+								"attend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel activity by host",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a5f560f-c2a2-4bc2-9010-e8980e813fe2",
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"// response to be 200",
+									"pm.test(\"response is 400\", function() {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/activities/b8759f1c-5441-4130-a472-c8cfc3d46d76/attend",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"b8759f1c-5441-4130-a472-c8cfc3d46d76",
+								"attend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login as tom and save token to env",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "569fe911-7ee7-46e3-b5d7-958007850d35",
+								"exec": [
+									"const user = pm.response.json();",
+									"",
+									"pm.test(\"Has properties\", function () {",
+									"    pm.expect(user).to.have.property('displayName');",
+									"    pm.expect(user).to.have.property('username');",
+									"    pm.expect(user).to.have.property('image');",
+									"    pm.expect(user).to.have.property('token');",
+									"});",
+									"",
+									"if (pm.test(\"Has properties\")) {",
+									"    pm.globals.set('tom_token', user.token);",
+									"}",
+									"",
+									"pm.test(\"Global token has been set\", function() {",
+									"    var token = pm.globals.get('tom_token');",
+									"    pm.expect(token).to.eql(user.token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"tom@test.com\",\n\t\"password\": \"Pa$$w0rd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit an Activity as Bob who is host",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7ef0c8b0-bf31-48f3-889c-a000c80e6e85",
+								"exec": [
+									"var moment = require(\"moment\");\r",
+									"\r",
+									"pm.environment.set('activityDate', moment().add(14, 'days').toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Editing activity as bob the host\",\n\t\"description\": \"Description of the test event\",\n\t\"category\": \"Culture\",\n\t\"date\": \"{{activityDate}}\",\n\t\"city\": \"London\",\n\t\"venue\": \"Tower of London\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/activities/563116a8-6369-4cdb-ba35-b29754308d86",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"563116a8-6369-4cdb-ba35-b29754308d86"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit an Activity as Tom not host",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "00cfd027-6b0b-4095-b646-8d3a91c466c3",
+								"exec": [
+									"var moment = require(\"moment\");\r",
+									"\r",
+									"pm.environment.set('activityDate', moment().add(14, 'days').toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{tom_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Editing activity as tom - not host should fail with 403\",\n\t\"description\": \"Description of the test event\",\n\t\"category\": \"Culture\",\n\t\"date\": \"{{activityDate}}\",\n\t\"city\": \"London\",\n\t\"venue\": \"Tower of London\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/activities/788d8631-0256-4d4a-a3d7-0253036db0e9",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"788d8631-0256-4d4a-a3d7-0253036db0e9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete activity as Tom not host",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{tom_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/activities/2ee2335f-aef3-46cb-85fd-5d123bfca189",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"2ee2335f-aef3-46cb-85fd-5d123bfca189"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete activity as Bob host",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/activities/2ee2335f-aef3-46cb-85fd-5d123bfca189",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"2ee2335f-aef3-46cb-85fd-5d123bfca189"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Module 16",
+			"item": [
+				{
+					"name": "Login as bob and save token to env",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "93ba51b5-9ea2-474a-a2f9-8c2a569f4050",
+								"exec": [
+									"const user = pm.response.json();",
+									"",
+									"pm.test(\"Has properties\", function () {",
+									"    pm.expect(user).to.have.property('displayName');",
+									"    pm.expect(user).to.have.property('username');",
+									"    pm.expect(user).to.have.property('image');",
+									"    pm.expect(user).to.have.property('token');",
+									"});",
+									"",
+									"if (pm.test(\"Has properties\")) {",
+									"    pm.globals.set('token', user.token);",
+									"}",
+									"",
+									"pm.test(\"Global token has been set\", function() {",
+									"    var token = pm.globals.get('token');",
+									"    pm.expect(token).to.eql(user.token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"bob@test.com\",\n\t\"password\": \"Pa$$w0rd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Photo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "File",
+									"type": "file",
+									"src": "/Users/neil/Desktop/APIPhotos/bat3.jpg"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/photos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"photos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get current user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Photo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/photos/houh9nt3vhxesvc0bsn7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"photos",
+								"houh9nt3vhxesvc0bsn7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Main Photo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/photos/kcdyuovk08n68z4crpyn/setmain",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"photos",
+								"kcdyuovk08n68z4crpyn",
+								"setmain"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/profiles/bob",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								"bob"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile Tom",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/profiles/tom",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								"tom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Photo Tom",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{tom_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "File",
+									"type": "file",
+									"src": "/Users/neil/Desktop/APIPhotos/superman1.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/photos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"photos"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Module 18",
+			"item": [
+				{
+					"name": "Login as bob and save token to env",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f29c988f-ebf3-47b6-84b2-f32ce628e7e2",
+								"exec": [
+									"const user = pm.response.json();",
+									"",
+									"pm.test(\"Has properties\", function () {",
+									"    pm.expect(user).to.have.property('displayName');",
+									"    pm.expect(user).to.have.property('username');",
+									"    pm.expect(user).to.have.property('image');",
+									"    pm.expect(user).to.have.property('token');",
+									"});",
+									"",
+									"if (pm.test(\"Has properties\")) {",
+									"    pm.globals.set('token', user.token);",
+									"}",
+									"",
+									"pm.test(\"Global token has been set\", function() {",
+									"    var token = pm.globals.get('token');",
+									"    pm.expect(token).to.eql(user.token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"bob@test.com\",\n\t\"password\": \"Pa$$w0rd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/user/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Bio",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"displayName\": \"Bob\",\n\t\"bio\": \"Bobs biography\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/profiles",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"profiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/profiles/bob",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								"bob"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Module 20",
+			"item": [
+				{
+					"name": "Login as bob and save token to env",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "09e10c38-6230-44b9-944d-7e045e89ac26",
+								"exec": [
+									"const user = pm.response.json();",
+									"",
+									"pm.test(\"Has properties\", function () {",
+									"    pm.expect(user).to.have.property('displayName');",
+									"    pm.expect(user).to.have.property('username');",
+									"    pm.expect(user).to.have.property('image');",
+									"    pm.expect(user).to.have.property('token');",
+									"});",
+									"",
+									"if (pm.test(\"Has properties\")) {",
+									"    pm.globals.set('token', user.token);",
+									"}",
+									"",
+									"pm.test(\"Global token has been set\", function() {",
+									"    var token = pm.globals.get('token');",
+									"    pm.expect(token).to.eql(user.token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"bob@test.com\",\n\t\"password\": \"Pa$$w0rd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login as tom and save token to env",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7246c21d-d2b8-4cd5-86d0-21b672507e7d",
+								"exec": [
+									"const user = pm.response.json();",
+									"",
+									"pm.test(\"Has properties\", function () {",
+									"    pm.expect(user).to.have.property('displayName');",
+									"    pm.expect(user).to.have.property('username');",
+									"    pm.expect(user).to.have.property('image');",
+									"    pm.expect(user).to.have.property('token');",
+									"});",
+									"",
+									"if (pm.test(\"Has properties\")) {",
+									"    pm.globals.set('tom_token', user.token);",
+									"}",
+									"",
+									"pm.test(\"Global token has been set\", function() {",
+									"    var token = pm.globals.get('tom_token');",
+									"    pm.expect(token).to.eql(user.token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"tom@test.com\",\n\t\"password\": \"Pa$$w0rd\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bob's Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/profiles/bob",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								"bob"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tom's Profile as Bob",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/profiles/tom",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								"tom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Follow tom",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/follow/tom",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"follow",
+								"tom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfollow tom",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/profiles/tom/follow",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								"tom",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bob's Followings",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/follow/bob?predicate=following",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"follow",
+								"bob"
+							],
+							"query": [
+								{
+									"key": "predicate",
+									"value": "following"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bob's Followers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/follow/bob?predicate=followers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"follow",
+								"bob"
+							],
+							"query": [
+								{
+									"key": "predicate",
+									"value": "followers"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tom's Followings",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/follow/tom?predicate=following",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"follow",
+								"tom"
+							],
+							"query": [
+								{
+									"key": "predicate",
+									"value": "following"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tom's Followers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/follow/tom?predicate=followers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"follow",
+								"tom"
+							],
+							"query": [
+								{
+									"key": "predicate",
+									"value": "followers"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Follow bob as tom",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{tom_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/profiles/bob/follow",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								"bob",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Module 21",
+			"item": [
+				{
+					"name": "Login as bob and save token to env",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c3eb44c4-589e-4ea7-be61-ee45cde2ff10",
+								"exec": [
+									"const user = pm.response.json();",
+									"",
+									"pm.test(\"Has properties\", function () {",
+									"    pm.expect(user).to.have.property('displayName');",
+									"    pm.expect(user).to.have.property('username');",
+									"    pm.expect(user).to.have.property('image');",
+									"    pm.expect(user).to.have.property('token');",
+									"});",
+									"",
+									"if (pm.test(\"Has properties\")) {",
+									"    pm.globals.set('token', user.token);",
+									"}",
+									"",
+									"pm.test(\"Global token has been set\", function() {",
+									"    var token = pm.globals.get('token');",
+									"    pm.expect(token).to.eql(user.token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"bob@test.com\",\n\t\"password\": \"Pa$$w0rd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activities no queryString",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d1e84934-95dd-4a69-81ca-b25af7e8f36d",
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"// response to be 200",
+									"pm.test(\"response is 200\", function() {",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"has all properties\", function() {",
+									"    pm.expect(data.activities[0]).to.have.property('id');",
+									"    pm.expect(data.activities[0]).to.have.property('title');",
+									"    pm.expect(data.activities[0]).to.have.property('description');",
+									"    pm.expect(data.activities[0]).to.have.property('date');",
+									"    pm.expect(data.activities[0]).to.have.property('city');",
+									"    pm.expect(data.activities[0]).to.have.property('venue');",
+									"    pm.expect(data.activities[0]).to.have.property('attendees');",
+									"});",
+									"",
+									"pm.test(\"activity count greater than zero\", function(){",
+									"    pm.expect(data.activityCount).to.be.above(0);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/activities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activities limit 5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8922c39f-f1d7-4275-9ebd-0dde7eef58cb",
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"// response to be 200",
+									"pm.test(\"response is 200\", function() {",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"has all properties\", function() {",
+									"    pm.expect(data.activities[0]).to.have.property('id');",
+									"    pm.expect(data.activities[0]).to.have.property('title');",
+									"    pm.expect(data.activities[0]).to.have.property('description');",
+									"    pm.expect(data.activities[0]).to.have.property('date');",
+									"    pm.expect(data.activities[0]).to.have.property('city');",
+									"    pm.expect(data.activities[0]).to.have.property('venue');",
+									"    pm.expect(data.activities[0]).to.have.property('attendees');",
+									"});",
+									"",
+									"pm.test(\"activity count greater than zero\", function(){",
+									"    pm.expect(data.activityCount).to.be.above(0);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/activities?limit=5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activities limit 5 offset 5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bc9aff99-0028-403d-850a-8e495b272a25",
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"// response to be 200",
+									"pm.test(\"response is 200\", function() {",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"has all properties\", function() {",
+									"    pm.expect(data.activities[0]).to.have.property('id');",
+									"    pm.expect(data.activities[0]).to.have.property('title');",
+									"    pm.expect(data.activities[0]).to.have.property('description');",
+									"    pm.expect(data.activities[0]).to.have.property('date');",
+									"    pm.expect(data.activities[0]).to.have.property('city');",
+									"    pm.expect(data.activities[0]).to.have.property('venue');",
+									"    pm.expect(data.activities[0]).to.have.property('attendees');",
+									"});",
+									"",
+									"pm.test(\"activity count greater than zero\", function(){",
+									"    pm.expect(data.activityCount).to.be.above(0);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/activities?limit=2&offset=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "offset",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activities bob is attending",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "566f7f29-12fb-405c-8c90-5179794d0753",
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"// response to be 200",
+									"pm.test(\"response is 200\", function() {",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"has all properties\", function() {",
+									"    pm.expect(data.activities[0]).to.have.property('id');",
+									"    pm.expect(data.activities[0]).to.have.property('title');",
+									"    pm.expect(data.activities[0]).to.have.property('description');",
+									"    pm.expect(data.activities[0]).to.have.property('date');",
+									"    pm.expect(data.activities[0]).to.have.property('city');",
+									"    pm.expect(data.activities[0]).to.have.property('venue');",
+									"    pm.expect(data.activities[0]).to.have.property('attendees');",
+									"});",
+									"",
+									"pm.test(\"activity count greater than zero\", function(){",
+									"    pm.expect(data.activityCount).to.be.above(0);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/activities?isgoing=true",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							],
+							"query": [
+								{
+									"key": "isgoing",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activities bob is hosting",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fbcc4a0c-b914-4c85-bc94-c0f6df761d8c",
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"// response to be 200",
+									"pm.test(\"response is 200\", function() {",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"has all properties\", function() {",
+									"    pm.expect(data.activities[0]).to.have.property('id');",
+									"    pm.expect(data.activities[0]).to.have.property('title');",
+									"    pm.expect(data.activities[0]).to.have.property('description');",
+									"    pm.expect(data.activities[0]).to.have.property('date');",
+									"    pm.expect(data.activities[0]).to.have.property('city');",
+									"    pm.expect(data.activities[0]).to.have.property('venue');",
+									"    pm.expect(data.activities[0]).to.have.property('attendees');",
+									"});",
+									"",
+									"pm.test(\"activity count greater than zero\", function(){",
+									"    pm.expect(data.activityCount).to.be.above(0);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/activities?ishost=true",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							],
+							"query": [
+								{
+									"key": "ishost",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activities starting in 2 months time",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "57f9c903-576a-4043-b17c-a22fcc0bf4e1",
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"// response to be 200",
+									"pm.test(\"response is 200\", function() {",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"has all properties\", function() {",
+									"    pm.expect(data.activities[0]).to.have.property('id');",
+									"    pm.expect(data.activities[0]).to.have.property('title');",
+									"    pm.expect(data.activities[0]).to.have.property('description');",
+									"    pm.expect(data.activities[0]).to.have.property('date');",
+									"    pm.expect(data.activities[0]).to.have.property('city');",
+									"    pm.expect(data.activities[0]).to.have.property('venue');",
+									"    pm.expect(data.activities[0]).to.have.property('attendees');",
+									"});",
+									"",
+									"pm.test(\"activity count greater than zero\", function(){",
+									"    pm.expect(data.activityCount).to.be.above(0);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e5c76690-2fe1-4a6f-9de0-cb9e583a0dd3",
+								"exec": [
+									"var moment = require(\"moment\");\r",
+									"\r",
+									"pm.environment.set('activityDate', moment().add(2, 'months').toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/activities?startDate={{activityDate}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "{{activityDate}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activities starting in 2 months time bob is going to",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "02071faa-63aa-46b9-af99-32d5dcfdc13c",
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"// response to be 200",
+									"pm.test(\"response is 200\", function() {",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"has all properties\", function() {",
+									"    pm.expect(data.activities[0]).to.have.property('id');",
+									"    pm.expect(data.activities[0]).to.have.property('title');",
+									"    pm.expect(data.activities[0]).to.have.property('description');",
+									"    pm.expect(data.activities[0]).to.have.property('date');",
+									"    pm.expect(data.activities[0]).to.have.property('city');",
+									"    pm.expect(data.activities[0]).to.have.property('venue');",
+									"    pm.expect(data.activities[0]).to.have.property('attendees');",
+									"});",
+									"",
+									"pm.test(\"activity count greater than zero\", function(){",
+									"    pm.expect(data.activityCount).to.be.above(0);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6535486d-9afb-4d4d-a224-eb7bf1768967",
+								"exec": [
+									"var moment = require(\"moment\");\r",
+									"\r",
+									"pm.environment.set('activityDate', moment().add(4, 'months').toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/activities?startDate={{activityDate}}&isGoing=true",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "{{activityDate}}"
+								},
+								{
+									"key": "isGoing",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activities starting 3 months ago",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c3f2bc98-fc52-48fb-9c34-e99e7a87609a",
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"// response to be 200",
+									"pm.test(\"response is 200\", function() {",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"has all properties\", function() {",
+									"    pm.expect(data.activities[0]).to.have.property('id');",
+									"    pm.expect(data.activities[0]).to.have.property('title');",
+									"    pm.expect(data.activities[0]).to.have.property('description');",
+									"    pm.expect(data.activities[0]).to.have.property('date');",
+									"    pm.expect(data.activities[0]).to.have.property('city');",
+									"    pm.expect(data.activities[0]).to.have.property('venue');",
+									"    pm.expect(data.activities[0]).to.have.property('attendees');",
+									"});",
+									"",
+									"pm.test(\"activity count greater than zero\", function(){",
+									"    pm.expect(data.activityCount).to.be.above(0);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "017f96fe-6b43-43bf-97f7-8d201815a013",
+								"exec": [
+									"var moment = require(\"moment\");\r",
+									"\r",
+									"pm.environment.set('activityDate', moment().add(-3, 'months').toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/activities?startDate={{activityDate}}&isGoing=true",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "{{activityDate}}"
+								},
+								{
+									"key": "isGoing",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bob's Activities - all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/profiles/bob/activities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								"bob",
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bob's Activities - past",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/profiles/bob/activities?predicate=past",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								"bob",
+								"activities"
+							],
+							"query": [
+								{
+									"key": "predicate",
+									"value": "past"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bob's Activities - future",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/profiles/bob/activities?predicate=future",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								"bob",
+								"activities"
+							],
+							"query": [
+								{
+									"key": "predicate",
+									"value": "future"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bob's Activities - hosting",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/profiles/bob/activities?predicate=hosting",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								"bob",
+								"activities"
+							],
+							"query": [
+								{
+									"key": "predicate",
+									"value": "hosting"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "IdentityCB",
+			"item": [
+				{
+					"name": "Login as bob and save token to env",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b21b093e-ef64-44a9-a7d8-c9ddc883b56e",
+								"exec": [
+									"const user = pm.response.json();",
+									"",
+									"pm.test(\"Has properties\", function () {",
+									"    pm.expect(user).to.have.property('displayName');",
+									"    pm.expect(user).to.have.property('username');",
+									"    pm.expect(user).to.have.property('image');",
+									"    pm.expect(user).to.have.property('token');",
+									"});",
+									"",
+									"if (pm.test(\"Has properties\")) {",
+									"    pm.globals.set('token', user.token);",
+									"    pm.globals.set('refreshToken', user.refreshToken);",
+									"}",
+									"",
+									"pm.test(\"Global token has been set\", function() {",
+									"    var token = pm.globals.get('token');",
+									"    var refreshToken = pm.globals.get('refreshToken');",
+									"    pm.expect(token).to.eql(user.token);",
+									"    pm.expect(refreshToken).to.eql(user.refreshToken);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"bob@test.com\",\n\t\"password\": \"Pa$$w0rd\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8ac3f25e-4491-4cb3-aede-b82285cdb6e3",
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"// response to be 200",
+									"pm.test(\"response is 200\", function() {",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"has all properties\", function() {",
+									"    pm.expect(data[0]).to.have.property('id');",
+									"    pm.expect(data[0]).to.have.property('title');",
+									"    pm.expect(data[0]).to.have.property('description');",
+									"    pm.expect(data[0]).to.have.property('date');",
+									"    pm.expect(data[0]).to.have.property('city');",
+									"    pm.expect(data[0]).to.have.property('venue');",
+									"    pm.expect(data[0]).to.have.property('attendees');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/activities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh token for bob",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "af79b1cd-cb0b-4071-8c49-ebb0964abdc9",
+								"exec": [
+									"const user = pm.response.json();",
+									"",
+									"pm.test(\"Has properties\", function () {",
+									"    pm.expect(user).to.have.property('displayName');",
+									"    pm.expect(user).to.have.property('username');",
+									"    pm.expect(user).to.have.property('image');",
+									"    pm.expect(user).to.have.property('token');",
+									"});",
+									"",
+									"if (pm.test(\"Has properties\")) {",
+									"    pm.globals.set('token', user.token);",
+									"    pm.globals.set('refreshToken', user.refreshToken);",
+									"}",
+									"",
+									"pm.test(\"Global token has been set\", function() {",
+									"    var token = pm.globals.get('token');",
+									"    var refreshToken = pm.globals.get('refreshToken');",
+									"    pm.expect(token).to.eql(user.token);",
+									"    pm.expect(refreshToken).to.eql(user.refreshToken);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/account/refresh",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Regsiter new user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aae39115-892b-46be-a82a-fc92faa4ebc7",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"displayName\": \"test12\",\n\t\"username\": \"test12\",\n\t\"email\": \"nru02096@eoopy.com\",\n\t\"password\": \"Pa$$w0rd\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify User Email address",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e1d36d0-1f76-4886-bd99-3b31d54c17e3",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"token\": \"Q2ZESjhGeHN3VDhjdytWRXNLM0NqaTBpS0FhZEZGUitqN3JpazNDRVduZ3dpSU5PcW1ZMzBxUDRzMW44ek5MRTFuRnJ0RUk3L3oyY01SR2dyTmlXcVd4UHFMRGc4aTd1clB2OHNXZmp4a0w0TXVtdmRNd2ZTVjgvZnVDbHNCRG5jY3FEQUNLM3FBdHo4VlRZek9lU0dBMXduRVZJRlRvYjZTSXdRdXhtT1gwMlp4NjE3L3hwMkhyaGltNlJCZlFTeUNpMzQwRW85bjlFclg1VmNFZjJDSmhnZStjRkxQUmd1ZkVIdG4vRlFhY0EwV1ZzaVlkelBOc0pNV2lMYnVXRUhnUlFvQT09\",\n\t\"email\": \"nru02096@eoopy.com\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/verifyEmail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"verifyEmail"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "Q2ZESjhGeHN3VDhjdytWRXNLM0NqaTBpS0FhZEZGUitqN3JpazNDRVduZ3dpSU5PcW1ZMzBxUDRzMW44ek5MRTFuRnJ0RUk3L3oyY01SR2dyTmlXcVd4UHFMRGc4aTd1clB2OHNXZmp4a0w0TXVtdmRNd2ZTVjgvZnVDbHNCRG5jY3FEQUNLM3FBdHo4VlRZek9lU0dBMXduRVZJRlRvYjZTSXdRdXhtT1gwMlp4NjE3L3hwMkhyaGltNlJCZlFTeUNpMzQwRW85bjlFclg1VmNFZjJDSmhnZStjRkxQUmd1ZkVIdG4vRlFhY0EwV1ZzaVlkelBOc0pNV2lMYnVXRUhnUlFvQT09",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "nru02096@eoopy.com",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resend verification email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a6d56ec-c139-4249-abb3-7d1e2df922e9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/resendEmailConfirmationLink?email=pel82472@eoopy.com",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"resendEmailConfirmationLink"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "pel82472@eoopy.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c0100e50-e2f7-411e-a10b-c75558822c76",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/forgotPassword?email=nru02096@eoopy.com",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"forgotPassword"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "nru02096@eoopy.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d6aa4049-3627-42ee-a6fd-afd278d887a6",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"token\": \"Q2ZESjhGeHN3VDhjdytWRXNLM0NqaTBpS0FhZ09UNThIUW9DZDY0RVE5bFlBWWR2MExZb3FCb2pyNUlFSDhhRFlFU1NsMTQraWkrUFNSOFV3Vmt2VEsyYnBIdnNPcVppZ1ZEZlEyTzUxMSs5MHhDUmJDYjh5ZTdodlZSTnZNbUpTelREOFY4UHRucnZKZE1RaHJ2dFo1RVdEeTJia1gxNllnWjNVMUZYbWNpVlpMZE15Zk1mWkJ3Q3AxQU15emptOHRCQlJZMFhYK2JIcTBIVTFTM2FuRzFVYzRlMHFla05NQitvSDcwYXBhSFE0UjVV\",\n\t\"email\": \"nru02096@eoopy.com\",\n\t\"password\": \"Pa$$w0rd1\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/resetPassword",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"resetPassword"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "Q2ZESjhGeHN3VDhjdytWRXNLM0NqaTBpS0FhZEZGUitqN3JpazNDRVduZ3dpSU5PcW1ZMzBxUDRzMW44ek5MRTFuRnJ0RUk3L3oyY01SR2dyTmlXcVd4UHFMRGc4aTd1clB2OHNXZmp4a0w0TXVtdmRNd2ZTVjgvZnVDbHNCRG5jY3FEQUNLM3FBdHo4VlRZek9lU0dBMXduRVZJRlRvYjZTSXdRdXhtT1gwMlp4NjE3L3hwMkhyaGltNlJCZlFTeUNpMzQwRW85bjlFclg1VmNFZjJDSmhnZStjRkxQUmd1ZkVIdG4vRlFhY0EwV1ZzaVlkelBOc0pNV2lMYnVXRUhnUlFvQT09",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "nru02096@eoopy.com",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get users - admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/admin/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ada44080-1293-4f0b-bb66-b2c302ec4093",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "5b5164d4-2a39-4289-913e-2b286a28ac02",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "58453c25-5360-4a69-a993-413f955998e8",
+			"key": "url",
+			"value": "http://localhost:5000"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

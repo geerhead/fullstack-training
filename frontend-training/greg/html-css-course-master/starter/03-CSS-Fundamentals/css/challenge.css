@@ -1,14 +1,21 @@
 * {
     font-family: sans-serif;
     font-size: 20px;
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
 }
 
 article {
     border: black 5px solid;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 40%;
 }
 
 ul {
     list-style-type: square;
+    padding: 20px;
 }
 
 .price {
@@ -27,6 +34,8 @@ ul {
     border: none;
     font-size: 25px;
     text-transform: uppercase;
+    width: 100%;
+    padding: 10px 0;
 }
 
 
@@ -50,4 +59,8 @@ ul {
     background-color: #f7f7f7;
     text-align: center;
     text-transform: uppercase;
+}
+
+#product-details {
+    margin-top: 20px;
 }

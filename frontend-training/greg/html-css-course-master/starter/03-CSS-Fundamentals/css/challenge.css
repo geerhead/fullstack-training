@@ -11,6 +11,21 @@ article {
     margin: 0 auto;
     margin-top: 50px;
     width: 40%;
+    position: relative;
+}
+
+article::after {
+    content: "SALE";
+    background-color: #FF0000FF;
+    color: white;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: sans-serif;
+    font-weight: bold;
+    position: absolute;
+    top: -20px;
+    left: -25px;
 }
 
 ul {
@@ -51,6 +66,40 @@ ul {
 
 #more-information {
     color: black;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.color {
+    height: 22px;
+    width: 22px;
+    display: inline-block;;
+    margin-right: 10px;
+}
+
+.color-black {
+    background-color: #000;
+}
+
+.color-blue {
+    background-color: #000fff;
+}
+
+.color-red {
+    background-color: #FF0000FF;
+}
+
+.color-yellow {
+    background-color: #ffed00;
+}
+
+.color-green {
+    background-color: #64ff00;
+}
+
+
+.color-brown {
+    background-color: #A52A2AFF;
 }
 
 #main-header {

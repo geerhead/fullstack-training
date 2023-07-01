@@ -27,7 +27,7 @@ body {
     padding-left: 40px;
     padding-right: 40px; */
     padding: 20px 40px;
-    margin-bottom: 60px;
+    /*margin-bottom: 60px;*/
     /* height: 80px; */
 }
 
@@ -37,7 +37,7 @@ nav {
 }
 
 article {
-    margin-bottom: 60px;
+    /*margin-bottom: 60px;*/
 }
 
 .post-header {
@@ -286,20 +286,21 @@ h2::before {
     font-style: italic;
 }
 
-.row {
-    display: flex;
-    align-items: flex-start;
-    gap: 30px;
-}
 
-article {
-    flex: 1;
-    margin-bottom: 0;
-}
+/*.row {*/
+/*    display: flex;*/
+/*    align-items: flex-start;*/
+/*    gap: 30px;*/
+/*}*/
 
-aside {
-    flex: 0 0 300px;
-}
+/*article {*/
+/*    flex: 1;*/
+/*    margin-bottom: 0;*/
+/*}*/
+
+/*aside {*/
+/*    flex: 0 0 300px;*/
+/*}*/
 
 /* Resolving conflicts */
 /* #copyright {
@@ -369,3 +370,30 @@ nav p {
 /*footer {*/
 /*    clear: both;*/
 /*}*/
+
+/* CSS GRID LAYOUT*/
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    column-gap: 75px;
+    row-gap: 60px;
+    align-items: start;
+}
+
+.main-header {
+    /*grid-column: 1 / span2;*/
+    grid-column: 1 / -1;
+}
+
+article {
+
+}
+
+aside {
+
+}
+
+footer {
+    grid-column: 1 / -1;
+}

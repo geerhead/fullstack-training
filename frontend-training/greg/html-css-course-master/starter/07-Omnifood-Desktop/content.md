@@ -126,3 +126,19 @@ Careers
 Recipe directory
 Help center
 Privacy & terms
+
+
+######
+
+
+## Sections
+
+- Logo & Navigation
+- Hero
+- Featured In
+- How it works
+- Meals & Diets
+- Testimonials & Gallery
+- Pricing
+- CTA
+- Footer

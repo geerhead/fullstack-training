@@ -174,3 +174,7 @@ body {
 .grid--4-cols {
     grid-template-columns: repeat(3, 1fr);
 }
+
+strong {
+    font-weight: 500;
+}

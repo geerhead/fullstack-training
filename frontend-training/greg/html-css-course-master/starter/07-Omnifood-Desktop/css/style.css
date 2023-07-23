@@ -296,25 +296,6 @@
     font-size: 1.8rem;
 }
 
-.list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
-}
-
-.list-item {
-    font-size: 1.8rem;
-    display: flex;
-    align-items: center;
-    gap: 1.6rem;
-}
-
-.list-icon {
-    width: 3rem;
-    height: 3rem;
-    color: #e67e22;
-}
 
 /*  TESTIMONIALS SECTION */
 
@@ -381,3 +362,102 @@
     transform: scale(1.1);
 }
 
+
+/* PRICING SECTION */
+
+.sectional-pricing {
+    padding: 9.6rem 0;
+}
+
+.pricing-plan {
+    border-radius: 11px;
+    width: 75%;
+}
+
+.pricing-plan--starter {
+    justify-self: center;
+    border: 2px solid #fdf2e9;
+    padding: 4.6rem;
+}
+
+.pricing-plan--complete {
+    background-color: #fdf2e9;
+    padding: 4.8rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-plan--complete::after {
+    content: "Best Value";
+    position: absolute;
+    top: 6%;
+    right: -18%;
+    background-color: #ffd43b;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 0.8rem 8rem;
+    color: #333;
+    transform: rotate(45deg);
+}
+
+.plan-header {
+    text-align: center;
+    margin-bottom: 4.8rem;
+}
+
+.plan-name {
+    color: #cf711f;
+    font-weight: 600;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    margin-bottom: 3.2rem;
+}
+
+.plan-price {
+    font-size: 6.2rem;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 1.6rem;
+}
+
+.plan-price span {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-right: 0.8rem;
+}
+
+.plan-text {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #6f6f6f;
+}
+
+.plan-sign-up {
+    text-align: center;
+    margin-top: 4.8rem;
+}
+
+.feature-icon {
+    color: #e67e22;
+    height: 3.2rem;
+    width: 3.2rem;
+    margin-bottom: 3.2rem;
+    background-color: #fdf2e9;
+    padding: 1.6rem;
+    border-radius: 50%;
+
+}
+
+.feature-title {
+    font-size: 2.4rem;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 1.6rem;
+}
+
+.feature-text {
+    font-size: 1.8rem;
+    line-height: 1.8;
+}

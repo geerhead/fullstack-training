@@ -345,3 +345,16 @@
     color: #777;
 }
 
+/* GALLERY SECTION */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+}
+

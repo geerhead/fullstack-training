@@ -53,6 +53,7 @@ document.querySelector('.again').addEventListener('click', () => {
   document.querySelector('.message').textContent = originalMessage;
   document.querySelector('.score').textContent = '20';
   document.querySelector('.number').textContent = '?';
+  document.querySelector('.guess').value = '';
 });
 
 // Coding Challenge #1

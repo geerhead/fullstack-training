@@ -231,5 +231,25 @@ const gameEvents = new Map([
   [92, '🔶 Yellow card'],
 ]);
 
-console.log(Object.entries(gameEvents));
+console.log(gameEvents.values())
+// const events = new Set();
+// for (const [key, value] of gameEvents) {
+//   events.add(value);
+// }
+//
+// events.delete('🔶 Yellow card');
+// console.log(events);
+//
+// for (const [key, value] of gameEvents) {
+//   console.log(
+//     key < 45
+//       ? `[FIRST HALF] ${key}: ${value}`
+//       : `[SECOND HALF] ${key}: ${value}`
+//   );
+  // if (key < 45) {
+  //   console.log(`[FIRST HALF] ${key}: ${value}`);
+  // } else {
+  //   console.log(`[SECOND HALF] ${key}: ${value}`);
+  // }
+}
 // console.log(events);

@@ -39,11 +39,15 @@ const poll = {
   // This generates [0, 0, 0, 0]. More in the next section 😃
   answers: new Array(4).fill(0),
   registerNewAnswer: function () {
-    console.log(`${this.question}`);
-    for (const language of this.options) {
-      console.log(language);
-    }
+    console.log(this.options);
+    const answer = prompt(
+      `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+    );
+    this.answers[answer]++;
+    console.log(this.answers);
   },
 };
 
-poll.registerNewAnswer();
+document
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));

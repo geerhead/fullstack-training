@@ -78,6 +78,21 @@ const displayMovements = function (movements) {
 };
 
 displayMovements(account1.movements);
+
+const user = 'Steven Thomas Williams'; /// stw
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+createUsernames(accounts);
+console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -109,24 +124,54 @@ HINT: Use tools from all lectures in this section so far 😉
 TEST DATA 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
 TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 
-GOOD LUCK 😀
-*/
+// GOOD LUCK 😀
+// */
+//
+// const juliaDogs = [3, 5, 2, 12, 7];
+// const kateDogs = [4, 1, 15, 8, 3];
+// const juliaDogsFixed = juliaDogs.slice(1, -2);
+//
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   const dogsCombined = [...dogsJulia, ...dogsKate];
+//   dogsCombined.forEach(function (age) {
+//     if (age > 3) {
+//       console.log(`This dog is ${age} years old`);
+//       console.log('This dog is not a puppy');
+//     } else {
+//       console.log(`This dog is ${age} years old`);
+//       console.log('This dog is a puppy');
+//     }
+//   });
+// };
+//
+// checkDogs(juliaDogsFixed, kateDogs);
 
-const juliaDogs = [3, 5, 2, 12, 7];
-const kateDogs = [4, 1, 15, 8, 3];
-const juliaDogsFixed = juliaDogs.slice(1, -2);
+const euroToUsd = 1.1;
 
-const checkDogs = function (dogsJulia, dogsKate) {
-  const dogsCombined = [...dogsJulia, ...dogsKate];
-  dogsCombined.forEach(function (age) {
-    if (age > 3) {
-      console.log(`This dog is ${age} years old`);
-      console.log('This dog is not a puppy');
-    } else {
-      console.log(`This dog is ${age} years old`);
-      console.log('This dog is a puppy');
-    }
-  });
-};
+// const movementsUsd = movements.map(function (mov) {
+//   return mov * euroToUsd;
+// });
 
-checkDogs(juliaDogsFixed, kateDogs);
+const movementsUsd = movements.map(mov => {
+  return mov * euroToUsd;
+});
+
+// console.log(movements);
+// console.log(movementsUsd);
+
+const movementsUsdfor = [];
+for (const mov of movements) {
+  movementsUsdfor.push(mov * euroToUsd);
+}
+//
+// console.log(movementsUsdfor);
+
+const movementDescriptions = movements.map((mov, i, arr) => {
+  if (mov > 0) {
+    return `Movement ${i + 1}:You deposited ${mov}`;
+  } else {
+    return `Movement ${i + 1}:You withdrew ${mov}`;
+  }
+});
+
+// console.log(movementDescriptions);

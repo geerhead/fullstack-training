@@ -91,7 +91,7 @@ const createUsernames = function (accs) {
 };
 
 createUsernames(accounts);
-console.log(accounts);
+// console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -175,3 +175,28 @@ const movementDescriptions = movements.map((mov, i, arr) => {
 });
 
 // console.log(movementDescriptions);
+
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+
+// console.log(deposits);
+
+const withdrawals = movements.filter(function (mov) {
+  return mov < 0;
+});
+// console.log(withdrawals);
+
+// accumulator --> Snowball
+const balance = movements.reduce(function (acc, cur, i, arr) {
+  // console.log(`Iteration ${i}: ${acc}`);
+  return acc + cur;
+}, 0);
+
+// console.log(balance);
+
+const max = movements.reduce((acc, mov, i, arr) => {
+  return acc > mov ? acc : mov;
+}, movements[0]);
+
+// console.log(max);

@@ -219,7 +219,6 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 */
-// Original code that worked (ugly)
 //----------------------------------
 // const calcAverageHumanAge = function (ages) {
 //   const dogAgeInHumanAges = [];
@@ -235,17 +234,46 @@ GOOD LUCK 😀
 //   );
 // };
 
-//Optimized code that is failing - big derp
-const calcAverageHumanAge = function (ages) {
-  return (
-    ages.reduce((acc, curr, i, arr) => {
-      acc = curr > 2 ? acc + (16 + curr * 4) : acc;
-      return acc;
-    }, 0) / ages.filter(age => age > 2).length
-  );
-};
+//Optimized code
+// const calcAverageHumanAge = function (ages) {
+//   return (
+//       ages.reduce((acc, curr, i, arr) => {
+//         acc = curr > 2 ? acc + (16 + curr * 4) : acc;
+//         return acc;
+//       }, 0) / ages.filter(age => age > 2).length
+//   );
+// };
+//
+// const doggies = [5, 2, 4, 1, 15, 8, 3];
+// const doggies2 = [16, 6, 10, 5, 6, 1, 4];
+// console.log(calcAverageHumanAge(doggies));
+// console.log(calcAverageHumanAge(doggies2));
 
-const doggies = [5, 2, 4, 1, 15, 8, 3];
-const doggies2 = [16, 6, 10, 5, 6, 1, 4];
-console.log(calcAverageHumanAge(doggies));
-console.log(calcAverageHumanAge(doggies2));
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * euroToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositsUSD);
+
+const calcDisplaySummary = function (movemnets) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${out}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int > 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);

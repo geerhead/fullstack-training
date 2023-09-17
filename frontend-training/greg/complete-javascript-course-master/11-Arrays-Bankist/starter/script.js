@@ -61,9 +61,13 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
-  movements.forEach(function (mov, i) {
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  console.log(movs);
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `
     <div class="movements">
@@ -87,6 +91,13 @@ const createUsernames = function (accs) {
       .join('');
   });
 };
+
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
 
 createUsernames(accounts);
 // console.log(accounts);
@@ -312,7 +323,7 @@ btnLogin.addEventListener('click', function (e) {
   currentAccount = accounts.find(
     acc => acc.username === inputLoginUsername.value
   );
-  console.log(currentAccount);
+  // console.log(currentAccount);
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
     labelWelcome.textContent = `Welcome back, ${
@@ -374,17 +385,35 @@ btnLoan.addEventListener('click', function (e) {
 });
 
 const overallBalance = accounts.flatMap(acc => acc.movements);
-console.log(overallBalance);
+// console.log(overallBalance);
 // const overallBalance = accounts.map(acc => acc.movements).flat();
 // console.log(overallBalance);
 
-movements.sort((a, b) => {
-  if (a > b) {
-    return 1;
-  }
-  if (b > a) {
-    return -1;
-  }
-});
+// return < 0, A, B (Keep order)
+// return > 0, B, A (Switch order)
+// Basically return a positive to switch order, negative to keep
+// Switch returns to do a descending list since this is ascending by default
 
-console.log(movements);
+// movements.sort((a, b) => {
+//   if (a > b) {
+//     return 1;
+//   }
+//   if (b > a) {
+//     return -1;
+//   }
+// });
+
+// console.log(movements);
+//
+// movements.sort((a, b) => {
+//   if (a > b) {
+//     return -1;
+//   }
+//   if (b > a) {
+//     return 1;
+//   }
+// });
+
+movements.sort((a, b) => a - b);
+movements.sort((a, b) => b - a);
+// console.log(movements);

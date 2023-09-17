@@ -218,34 +218,34 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 GOOD LUCK 😀
 */
 //----------------------------------
-// const calcAverageHumanAge = function (ages) {
-//   const dogAgeInHumanAges = [];
-//   ages.map((age, i, arr) => {
-//     let d2hAge = age <= 2 ? 2 * age : 16 + age * 4;
-//     d2hAge >= 18 ? dogAgeInHumanAges.push(d2hAge) : '';
-//   });
-//   // console.log(dogAgeInHumanAges);
-//   return (
-//     dogAgeInHumanAges.reduce((acc, curr, i, arr) => {
-//       return acc + curr;
-//     }, 0) / dogAgeInHumanAges.length
-//   );
-// };
+const calcAverageHumanAge = function (ages) {
+  const dogAgeInHumanAges = [];
+  ages.map((age, i, arr) => {
+    let d2hAge = age <= 2 ? 2 * age : 16 + age * 4;
+    d2hAge >= 18 ? dogAgeInHumanAges.push(d2hAge) : '';
+  });
+  // console.log(dogAgeInHumanAges);
+  return (
+    dogAgeInHumanAges.reduce((acc, curr, i, arr) => {
+      return acc + curr;
+    }, 0) / dogAgeInHumanAges.length
+  );
+};
 
-//Optimized code
-// const calcAverageHumanAge = function (ages) {
-//   return (
-//       ages.reduce((acc, curr, i, arr) => {
-//         acc = curr > 2 ? acc + (16 + curr * 4) : acc;
-//         return acc;
-//       }, 0) / ages.filter(age => age > 2).length
-//   );
-// };
-//
-// const doggies = [5, 2, 4, 1, 15, 8, 3];
-// const doggies2 = [16, 6, 10, 5, 6, 1, 4];
-// console.log(calcAverageHumanAge(doggies));
-// console.log(calcAverageHumanAge(doggies2));
+// Optimized code
+const calcAverageHumanAge = function (ages) {
+  return (
+    ages.reduce((acc, curr, i, arr) => {
+      acc = curr > 2 ? acc + (16 + curr * 4) : acc;
+      return acc;
+    }, 0) / ages.filter(age => age > 2).length
+  );
+};
+
+const doggies = [5, 2, 4, 1, 15, 8, 3];
+const doggies2 = [16, 6, 10, 5, 6, 1, 4];
+console.log(calcAverageHumanAge(doggies));
+console.log(calcAverageHumanAge(doggies2));
 
 const totalDepositsUSD = movements
   .filter(mov => mov > 0)
@@ -289,6 +289,21 @@ const firstWithdrawal = movements.find(mov => mov < 0);
 // console.log(account);
 
 //Event handler
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (
+    currentAccount?.username === inputCloseUsername.value &&
+    currentAccount?.pin === Number(inputClosePin.value)
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    accounts.splice(index, 1);
+    containerApp.style.opacity = 0;
+  }
+});
 
 let currentAccount;
 

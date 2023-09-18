@@ -417,3 +417,16 @@ const overallBalance = accounts.flatMap(acc => acc.movements);
 movements.sort((a, b) => a - b);
 movements.sort((a, b) => b - a);
 // console.log(movements);
+
+// Creating arrays
+
+console.log([1, 2, 3, 4, 5, 6]);
+console.log(new Array(1, 2, 3, 4, 5, 6));
+const x = new Array(7);
+// x.fill(1);
+x.fill(1, 3, 5);
+console.log(x);
+
+const y = Array.from({ length: 7 }, (_, i) => i + 1);
+
+console.log(y);

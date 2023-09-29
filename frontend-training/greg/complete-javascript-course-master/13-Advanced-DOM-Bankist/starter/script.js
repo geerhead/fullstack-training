@@ -8,7 +8,7 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const header = document.querySelector('.header');
-const allSections = document.querySelectorAll('.section');
+// const allSections = document.querySelectorAll('.section');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 const allButtons = document.getElementsByTagName('button');
@@ -159,6 +159,32 @@ const headerObserver = new IntersectionObserver(
     }
 );
 headerObserver.observe(header)
+
+
+// Reveal sections
+
+const allSections = document.querySelectorAll('.section')
+const revealSection = function(entries, observer){
+ const [entry] = entries;
+  console.log(entry)
+  if(!entry.isIntersecting) return;
+
+  entry.target.classList.remove('section--hidden')
+  observer.unobserve(entry.target);
+
+}
+
+
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15
+})
+
+allSections.forEach(function(section){
+  sectionObserver.observe(section)
+  section.classList.add('section--hidden')
+});
 //Bad practice, use event delegation
 // tabs.forEach(t => t.addEventListener('click', () => {
 //   console.log('Tab')

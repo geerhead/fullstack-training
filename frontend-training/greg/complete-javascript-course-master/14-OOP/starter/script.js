@@ -82,31 +82,68 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 GOOD LUCK 😀
 */
 
-function Car(make, speed) {
-  this.make = make;
-  this.speed = speed;
-  this.accelerate = function () {
-    this.speed += 10;
-    console.log(`${this.make} speed ${this.speed} km/h`);
-  };
-  this.brake = function () {
-    this.speed -= 5;
-    console.log(`${this.make} speed ${this.speed} km/h`);
-  };
+// function Car(make, speed) {
+//   this.make = make;
+//   this.speed = speed;
+//   this.accelerate = function () {
+//     this.speed += 10;
+//     console.log(`${this.make} speed ${this.speed} km/h`);
+//   };
+//   this.brake = function () {
+//     this.speed -= 5;
+//     console.log(`${this.make} speed ${this.speed} km/h`);
+//   };
+// }
+//
+// const bmw = new Car('BMW', 120);
+// const merc = new Car('Mercedes', 95);
+
+// bmw.accelerate();
+// bmw.accelerate();
+// bmw.accelerate();
+// bmw.brake();
+// bmw.brake();
+// bmw.brake();
+// merc.accelerate();
+// merc.accelerate();
+// merc.accelerate();
+// merc.brake();
+// merc.brake();
+// merc.brake();
+
+// class expression
+// const PersonCl = class {};
+
+// class declaration
+
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // Methods will be added to the prototype of the class since it's outside the constructor
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.firstName}`);
+  }
 }
 
-const bmw = new Car('BMW', 120);
-const merc = new Car('Mercedes', 95);
+const jessica = new PersonCl('Jessica', 1996);
+console.log(jessica);
+jessica.calcAge();
+console.log(jessica.__proto__ === PersonCl.prototype);
 
-bmw.accelerate();
-bmw.accelerate();
-bmw.accelerate();
-bmw.brake();
-bmw.brake();
-bmw.brake();
-merc.accelerate();
-merc.accelerate();
-merc.accelerate();
-merc.brake();
-merc.brake();
-merc.brake();
+// PersonCl.prototype.greet = function () {
+//   console.log(`Hey ${this.firstName}`);
+// };
+
+jessica.greet();
+
+// 1. Classes are NOT hoisted
+// 2. Classes are first-class citizens
+// 3. Classes are executed in strict mode
+// Personal preference for using constructor functions

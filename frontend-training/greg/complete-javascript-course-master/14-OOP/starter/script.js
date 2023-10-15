@@ -1,16 +1,24 @@
 'use strict';
 //
-// const Person = function (firstName, birthYear) {
-//   // Instance properties
-//   this.firstName = firstName;
-//   this.birthYear = birthYear;
-//   // Never do this - never put methods in function constructors
-//   // this.calcAge = function() {
-//   //     console.log(2037 - this.birthYear)
-//   // }
-// };
+const Person = function (firstName, birthYear) {
+  // Instance properties
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+  // Never do this - never put methods in function constructors
+  // this.calcAge = function() {
+  //     console.log(2037 - this.birthYear)
+  // }
+};
+
+Person.hey = function () {
+  console.log('hey there');
+  console.log(this);
+};
+
+const jonas = new Person('Jonas', 1991);
+Person.hey();
 //
-// const jonas = new Person('Jonas', 1991);
+
 // console.log(jonas);
 //
 // // Behind the scenes steps
@@ -116,36 +124,45 @@ GOOD LUCK 😀
 
 // class declaration
 
-// class PersonCl {
-//   constructor(fullName, birthYear) {
-//     this.fullName = fullName;
-//     this.birthYear = birthYear;
-//   }
-//
-//   // Methods will be added to the prototype of the class since it's outside the constructor
-//   calcAge() {
-//     console.log(2037 - this.birthYear);
-//   }
-//
-//   greet() {
-//     console.log(`Hey ${this.fullName}`);
-//   }
-//
-//   get age() {
-//     return 2037 - this.birthYear;
-//   }
-//
-//   set fullName(name) {
-//     if (name.includes(' ')) this._fullName = name;
-//     else alert(`${name} is not a full name!`);
-//   }
-//
-//   get fullName() {
-//     return this._fullName;
-//   }
-// }
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
 
-// const jessica = new PersonCl('Jessica Davis', 1996);
+  // Methods will be added to the prototype of the class since it's outside the constructor
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.fullName}`);
+  }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  // Static method
+
+  static hey() {
+    console.log('Hey there!!');
+    console.log('this');
+  }
+}
+
+PersonCl.hey();
+
+const jessica = new PersonCl('Jessica Davis', 1996);
 // console.log(jessica.age);
 // console.log(jessica);
 // console.log(jessica.fullName);

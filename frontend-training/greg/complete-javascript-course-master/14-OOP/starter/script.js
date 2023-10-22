@@ -403,23 +403,34 @@ GOOD LUCK */
 // jay.introduce();
 // jay.calcAge();
 
+// 1) Public fields
+// 2) Private fields
+// 3) Public methods
+// 4) Private methods
+
 class Account {
+  // Public field definition - Only on instances, not the prototype - reference by this keyword
+  locale = navigator.language;
+  // Private fields
+  #movements = [];
+  #pin;
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this.pin = _pin;
+    this.#pin = pin;
     // Protected property _ <-- prefix
-    this._movements = [];
     this.local = navigator.language;
     console.log(`Thanks for opening an account, ${owner}`);
   }
 
+  // Public Methods - Already in use
   getMovements() {
-    return this._movements;
+    return this.#movements;
   }
 
   deposit(val) {
-    this._movements.push(val);
+    this.#movements.push(val);
   }
 
   withdrawal(val) {
@@ -427,18 +438,19 @@ class Account {
   }
 
   balance() {
-    console.log(`${this._movements.reduce((acc, curr) => acc + curr, 0)}`);
-  }
-
-  _approveLoan(val) {
-    return true;
+    console.log(`${this.#movements.reduce((acc, curr) => acc + curr, 0)}`);
   }
 
   requestLoan(val) {
-    if (this._approveLoan(val)) {
+    if (this.#approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
     }
+  }
+
+  //Private methods, important for hiding details of methods
+  #approveLoan(val) {
+    return true;
   }
 }
 
@@ -451,3 +463,6 @@ acc1.withdrawal(140);
 acc1.requestLoan(1100);
 acc1.balance();
 console.log(acc1);
+console.log(acc1.getMovements());
+// console.log(acc1.#movements);
+// console.log(acc1.#pin);

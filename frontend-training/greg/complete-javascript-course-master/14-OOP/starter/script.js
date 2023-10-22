@@ -407,14 +407,19 @@ class Account {
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this.pin = pin;
-    this.movements = [];
+    this.pin = _pin;
+    // Protected property _ <-- prefix
+    this._movements = [];
     this.local = navigator.language;
     console.log(`Thanks for opening an account, ${owner}`);
   }
 
+  getMovements() {
+    return this._movements;
+  }
+
   deposit(val) {
-    this.movements.push(val);
+    this._movements.push(val);
   }
 
   withdrawal(val) {
@@ -422,15 +427,15 @@ class Account {
   }
 
   balance() {
-    console.log(`${this.movements.reduce((acc, curr) => acc + curr, 0)}`);
+    console.log(`${this._movements.reduce((acc, curr) => acc + curr, 0)}`);
   }
 
-  approveLoan(val) {
+  _approveLoan(val) {
     return true;
   }
 
   requestLoan(val) {
-    if (this.approveLoan(val)) {
+    if (this._approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
     }
@@ -440,6 +445,7 @@ class Account {
 const acc1 = new Account('Jonas', 'EUR', 1111);
 console.log(acc1);
 
+// acc1._movements.push(250);
 acc1.deposit(250);
 acc1.withdrawal(140);
 acc1.requestLoan(1100);

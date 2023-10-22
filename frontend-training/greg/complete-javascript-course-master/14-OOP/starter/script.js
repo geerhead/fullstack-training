@@ -375,30 +375,73 @@ GOOD LUCK */
 // martha.calcAge();
 // console.log(martha);
 
-const PersonProto = {
-  calcAge() {
-    console.log(2037 - this.birthYear);
-  },
-  init(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  },
-};
+// const PersonProto = {
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   },
+//   init(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//   },
+// };
+//
+// const steven = Object.create(PersonProto);
+//
+// const StudentProto = Object.create(PersonProto);
+//
+// StudentProto.init = function (firstName, birthYear, course) {
+//   PersonProto.init.call(this, firstName, birthYear);
+//   this.course = course;
+// };
+//
+// StudentProto.introduce = function () {
+//   console.log(`My name is ${this.firstName} and I study ${this.course}`);
+// };
+//
+// const jay = Object.create(StudentProto);
+// jay.init('Jay', 2010, 'Computer Science');
+// jay.introduce();
+// jay.calcAge();
 
-const steven = Object.create(PersonProto);
+class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.pin = pin;
+    this.movements = [];
+    this.local = navigator.language;
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
 
-const StudentProto = Object.create(PersonProto);
+  deposit(val) {
+    this.movements.push(val);
+  }
 
-StudentProto.init = function (firstName, birthYear, course) {
-  PersonProto.init.call(this, firstName, birthYear);
-  this.course = course;
-};
+  withdrawal(val) {
+    this.deposit(-val);
+  }
 
-StudentProto.introduce = function () {
-  console.log(`My name is ${this.firstName} and I study ${this.course}`);
-};
+  balance() {
+    console.log(`${this.movements.reduce((acc, curr) => acc + curr, 0)}`);
+  }
 
-const jay = Object.create(StudentProto);
-jay.init('Jay', 2010, 'Computer Science');
-jay.introduce();
-jay.calcAge();
+  approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if (this.approveLoan(val)) {
+      this.deposit(val);
+      console.log(`Loan approved`);
+    }
+  }
+}
+
+const acc1 = new Account('Jonas', 'EUR', 1111);
+console.log(acc1);
+
+acc1.deposit(250);
+acc1.withdrawal(140);
+acc1.requestLoan(1100);
+acc1.balance();
+console.log(acc1);

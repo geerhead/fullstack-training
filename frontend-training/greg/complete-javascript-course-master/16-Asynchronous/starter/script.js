@@ -277,3 +277,24 @@ TEST DATA: Images in the img folder. Test the error handler by passing a wrong i
 
 GOOD LUCK 😀
 */
+
+const whereAmI = async function (country) {
+  const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+  const data = await res.json();
+  renderCountry(...data);
+  fetch(`https://restcountries.com/v3.1/name/${country}`).then(res =>
+    res.json()
+  );
+};
+// console.log('FIRST');
+
+// whereAmI('cn');
+//
+// console.log(`1: Will get location`);
+// const city = whereAmI();
+// console.log(city);
+
+whereAmI('usa')
+  .then(city => console.log(`2: ${city}`))
+  .catch(err => console.error(`2:${err.message}`))
+  .finally(() => console.log(`3: Finished getting location`));

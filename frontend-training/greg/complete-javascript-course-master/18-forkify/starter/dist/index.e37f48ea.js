@@ -600,6 +600,7 @@ const controlRecipes = async function() {
         await _model.loadRecipe(id);
         // 2) Rendering recipe
         (0, _recipeViewDefault.default).render(_model.state.recipe);
+        controlServings(2);
     } catch (err) {
         (0, _recipeViewDefault.default).renderError();
     }
@@ -625,6 +626,12 @@ const controlPagination = function(goToPage) {
     (0, _resultsViewDefault.default).render(_model.getSearchResultsPage(goToPage));
     // 2) Render new pagination buttons
     (0, _paginationViewDefault.default).render(_model.state.search);
+};
+const controlServings = function() {
+    // Update the recipe servings (in state)
+    _model.updateServings(10);
+    // Update the recipe view
+    (0, _recipeViewDefault.default).render(_model.state.recipe);
 };
 const init = function() {
     (0, _recipeViewDefault.default).addHandlerRender(controlRecipes);
@@ -2502,6 +2509,7 @@ parcelHelpers.export(exports, "state", ()=>state);
 parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
 parcelHelpers.export(exports, "loadSearchResults", ()=>loadSearchResults);
 parcelHelpers.export(exports, "getSearchResultsPage", ()=>getSearchResultsPage);
+parcelHelpers.export(exports, "updateServings", ()=>updateServings);
 var _regeneratorRuntime = require("regenerator-runtime");
 var _config = require("./config");
 var _helpers = require("./helpers");
@@ -2556,6 +2564,13 @@ const getSearchResultsPage = function(page = state.search.page) {
     const start = (page - 1) * state.search.resultsPerPage; //0;
     const end = page * state.search.resultsPerPage; //9;
     return state.search.results.slice(start, end);
+};
+const updateServings = function(newServings) {
+    state.recipe.ingredients.quantity.forEach((ing)=>{
+        ing.quantity = ing.quantity * (newServings / state.recipe.servings);
+        // newQt = oldQt * newServ/oldServ
+        state.recipe.servings = newServings;
+    });
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","regenerator-runtime":"dXNgZ","./config":"k5Hzs","./helpers":"hGI1E"}],"k5Hzs":[function(require,module,exports) {

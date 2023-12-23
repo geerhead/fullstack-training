@@ -589,7 +589,7 @@ var _paginationViewDefault = parcelHelpers.interopDefault(_paginationView);
 var _runtime = require("regenerator-runtime/runtime");
 // if (module.hot) {
 //   module.hot.accept();
-// }
+// }f
 const recipeContainer = document.querySelector(".recipe");
 const controlRecipes = async function() {
     try {
@@ -600,7 +600,6 @@ const controlRecipes = async function() {
         await _model.loadRecipe(id);
         // 2) Rendering recipe
         (0, _recipeViewDefault.default).render(_model.state.recipe);
-        controlServings(2);
     } catch (err) {
         (0, _recipeViewDefault.default).renderError();
     }
@@ -629,12 +628,13 @@ const controlPagination = function(goToPage) {
 };
 const controlServings = function() {
     // Update the recipe servings (in state)
-    _model.updateServings(10);
+    _model.updateServings(8);
     // Update the recipe view
     (0, _recipeViewDefault.default).render(_model.state.recipe);
 };
 const init = function() {
     (0, _recipeViewDefault.default).addHandlerRender(controlRecipes);
+    (0, _recipeViewDefault.default).addHandlerUpdateServings(controlServings);
     (0, _searchViewDefault.default).addHandlerSearch(controlSearchResults);
     (0, _paginationViewDefault.default).addHandlerClick(controlPagination);
 };
@@ -2566,7 +2566,7 @@ const getSearchResultsPage = function(page = state.search.page) {
     return state.search.results.slice(start, end);
 };
 const updateServings = function(newServings) {
-    state.recipe.ingredients.quantity.forEach((ing)=>{
+    state.recipe.ingredients.forEach((ing)=>{
         ing.quantity = ing.quantity * (newServings / state.recipe.servings);
         // newQt = oldQt * newServ/oldServ
         state.recipe.servings = newServings;
@@ -2627,6 +2627,14 @@ class RecipeView extends (0, _viewDefault.default) {
             "hashchange",
             "load"
         ].forEach((ev)=>window.addEventListener(ev, handler));
+    }
+    addHandlerUpdateServings(handler) {
+        this._parentElement.addEventListener("click", function(e) {
+            const btn = e.target.closest(".btn--tiny");
+            if (!btn) return;
+            console.log(btn);
+            handler();
+        });
     }
     _generateMarkup() {
         return ` <figure class="recipe__fig">

@@ -8,7 +8,7 @@ import 'regenerator-runtime/runtime';
 
 // if (module.hot) {
 //   module.hot.accept();
-// }
+// }f
 
 const recipeContainer = document.querySelector('.recipe');
 const controlRecipes = async function () {
@@ -21,7 +21,6 @@ const controlRecipes = async function () {
     await model.loadRecipe(id);
     // 2) Rendering recipe
     recipeView.render(model.state.recipe);
-    controlServings(2);
   } catch (err) {
     recipeView.renderError();
   }
@@ -54,13 +53,14 @@ const controlPagination = function (goToPage) {
 
 const controlServings = function () {
   // Update the recipe servings (in state)
-  model.updateServings(10);
+  model.updateServings(8);
   // Update the recipe view
   recipeView.render(model.state.recipe);
 };
 
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
+  recipeView.addHandlerUpdateServings(controlServings);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
 };

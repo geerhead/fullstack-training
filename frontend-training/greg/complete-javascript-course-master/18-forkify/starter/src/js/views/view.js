@@ -13,8 +13,6 @@ export default class View {
   }
 
   update(data) {
-    if (!data || (Array.isArray(data) && data.length === 0))
-      return this.renderError();
     this._data = data;
     const newMarkup = this._generateMarkup();
     const newDOM = document.createRange().createContextualFragment(newMarkup);
@@ -26,7 +24,7 @@ export default class View {
       // Updates to change text
       if (
         !newEl.isEqualNode(curEl) &&
-        newEl.firstChild.nodeValue?.trim() !== ''
+        newEl.firstChild?.nodeValue.trim() !== ''
       ) {
         // console.log(`${newEl.firstChild.nodeValue.trim()}`);
         curEl.textContent = newEl.textContent;

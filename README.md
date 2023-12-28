@@ -58,17 +58,15 @@ Finally just go to the repo and clone it to your local via SSH
 ### Greg
 - [ ] [Build Responsive Real-World Websites with HTML and CSS](https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/) - By Jonas Schmettdman
 - [ ] [Advanced CSS and Sass: Flexbox, Grid, Animations and More!](https://www.udemy.com/course/advanced-css-and-sass/) - By Jonas Schmettdman
-- [ ] [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) - By Jonas Schmettdman
-- [ ] [Modern React with Redux](https://www.udemy.com/course/react-redux/) - By Stephen Grider
-- [ ] [Advanced React and Redux](https://www.udemy.com/course/react-redux-tutorial/) - By Stephen Grider
+- [ ] [The Complete JavaScript Course 2024: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) - By Jonas Schmettdman
+- [ ] [The Ultimate React Course 2024](https://www.udemy.com/course/the-ultimate-react-course/) - By Jonas Schmettdman
 #### Bonus
 - [ ] [Typescript: The Complete Developer's Guide](https://www.udemy.com/course/typescript-the-complete-developers-guide/) - By Stephen Grider
 ### Rich
 - [ ] [Build Responsive Real-World Websites with HTML and CSS](https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/) - By Jonas Schmettdman
 - [ ] [Advanced CSS and Sass: Flexbox, Grid, Animations and More!](https://www.udemy.com/course/advanced-css-and-sass/) - By Jonas Schmettdman
 - [ ] [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) - By Jonas Schmettdman
-- [ ] [Modern React with Redux](https://www.udemy.com/course/react-redux/) - By Stephen Grider
-- [ ] [Advanced React and Redux](https://www.udemy.com/course/react-redux-tutorial/) - By Stephen Grider
+- [ ] [The Ultimate React Course 2024](https://www.udemy.com/course/the-ultimate-react-course/) - By Jonas Schmettdman
 #### Bonus
 - [ ] [Typescript: The Complete Developer's Guide](https://www.udemy.com/course/typescript-the-complete-developers-guide/) - By Stephen Grider
 ### Backend Training

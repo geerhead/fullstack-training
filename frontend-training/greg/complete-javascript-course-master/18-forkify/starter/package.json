@@ -4,8 +4,8 @@
   "description": "Recipe application",
   "main": "index.js",
   "scripts": {
-    "start": "../node_modules/.bin/parcel index.html",
-    "build": "../node_modules/.bin/parcel build index.html"
+    "start": "./node_modules/.bin/parcel index.html",
+    "build": "./node_modules/.bin/parcel build index.html"
   },
   "author": "Greg",
   "license": "ISC",

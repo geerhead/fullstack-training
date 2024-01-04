@@ -5,6 +5,7 @@
   "dependencies": {
     "core-js": "^3.34.0",
     "fractional": "^1.0.0",
+    "parcel": "^2.10.3",
     "regenerator-runtime": "^0.14.0"
   }
 }

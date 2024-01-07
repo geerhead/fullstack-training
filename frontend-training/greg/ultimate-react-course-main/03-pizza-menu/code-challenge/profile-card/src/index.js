@@ -20,7 +20,6 @@ function ProfileCard() {
           "in continued learning. I enjoy League of Legends TFT and old school MMORPGs like Everquest P99"
         }
       />
-      <ProfileSkills />
     </div>
   );
 }
@@ -40,6 +39,17 @@ function ProfileInfo(props) {
     <div className={"profile_info"}>
       <h1>{props.name}</h1>
       <p>{props.description}</p>
+      <div className={"skills_section"}>
+        <ProfileSkills skill={"HTML+CSS"} bgColor={"blue"} />
+        <ProfileSkills skill={"Javascript"} bgColor={"red"} />
+        <ProfileSkills skill={"Git+GitHub"} bgColor={"orange"} />
+        <ProfileSkills skill={"Python"} bgColor={"green"} />
+        <ProfileSkills skill={"AWS"} bgColor={"orangered"} />
+        <ProfileSkills skill={"Azure"} bgColor={"darkblue"} />
+        <ProfileSkills skill={"CICD"} bgColor={"limegreen"} />
+        <ProfileSkills skill={"React"} bgColor={"lightblue"} />
+        <ProfileSkills skill={"GCP"} bgColor={"blue"} />
+      </div>
     </div>
   );
 }
@@ -47,7 +57,12 @@ function ProfileInfo(props) {
 function ProfileSkills(props) {
   return (
     <div>
-      <span className={"skills_span"}>HTML+CSS</span>
+      <span
+        className={"skills_span"}
+        style={{ backgroundColor: props.bgColor }}
+      >
+        {props.skill}
+      </span>
     </div>
   );
 }

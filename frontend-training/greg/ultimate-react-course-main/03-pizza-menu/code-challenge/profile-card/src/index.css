@@ -1,28 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "IBM Plex Mono", sans-serif;
+    background-color: #f7f7f7;
+}
+
 .profile-container {
+    margin: 5rem;
     border: #000000 3px solid;
     width: 20rem;
-    height: 60rem;
 }
 
 .profile_photo {
     width: 100%;
-    height: 30%;
+}
+
+.profile_name{
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 .profile_info {
     display: flex;
     flex-direction: column;
-    padding: 0 0.5rem;
+    padding: 0.5rem;
 }
 
 .skills_span {
     border-radius: 0.5rem;
     padding: 0.3rem;
     color: white;
-    height: 30rem;
 }
 
 .skills_section {
+    margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
     column-gap: 0.5rem;

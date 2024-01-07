@@ -17,7 +17,7 @@ function ProfileCard() {
         name={"Greg Geer"}
         description={
           "DevOps Engineer turned Full-stack to better understand the SLDC. I enjoy everything technology and believe" +
-          "in continued learning. I enjoy League of Legends TFT and old school MMORPGs like Everquest P99"
+          " in continued learning. I enjoy League of Legends TFT and old school MMORPGs like Everquest P99"
         }
       />
     </div>
@@ -37,7 +37,7 @@ function ProfilePhoto(props) {
 function ProfileInfo(props) {
   return (
     <div className={"profile_info"}>
-      <h1>{props.name}</h1>
+      <h1 className={"profile_name"}>{props.name}</h1>
       <p>{props.description}</p>
       <div className={"skills_section"}>
         <ProfileSkills skill={"HTML+CSS"} bgColor={"blue"} />

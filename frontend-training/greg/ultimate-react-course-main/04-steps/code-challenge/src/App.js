@@ -54,12 +54,18 @@ export default function App() {
     const date = new Date();
     const totalDays = count * step;
     date.setDate(date.getDate() + totalDays);
-    return (
-      <div className={"date-container"}>
-        {count > 0 ? totalDays : Math.abs(totalDays)}{" "}
-        {Math.abs(totalDays) > 1 ? "days" : "day"} {count < 0 ? "ago" : ""} from
-        today is {date.toDateString()}
-      </div>
-    );
+    if (count === 0) {
+      return (
+        <div className={"date-container"}>Today is {date.toDateString()}</div>
+      );
+    } else {
+      return (
+        <div className={"date-container"}>
+          {count > 0 ? totalDays : Math.abs(totalDays)}{" "}
+          {Math.abs(totalDays) > 1 ? "days" : "day"} {count < 0 ? "ago" : ""}{" "}
+          from today is {date.toDateString()}
+        </div>
+      );
+    }
   }
 }

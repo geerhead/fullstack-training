@@ -15,5 +15,12 @@ code {
 .step-container {
 }
 
-.count-container {
+.counter-container {
+    display: inline-flex;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

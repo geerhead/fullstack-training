@@ -4,7 +4,7 @@ export default function App() {
   const [step, setStep] = useState(1);
   const [count, setCount] = useState(1);
   return (
-    <div className={"counter-container"}>
+    <div className={"app-container"}>
       <Counter type={"Step"} />
       <Counter type={"Count"} />
       <DisplayDate />
@@ -55,7 +55,7 @@ export default function App() {
     const totalDays = count * step;
     date.setDate(date.getDate() + totalDays);
     return (
-      <div>
+      <div className={"date-container"}>
         {count > 0 ? totalDays : Math.abs(totalDays)}{" "}
         {Math.abs(totalDays) > 1 ? "days" : "day"} {count < 0 ? "ago" : ""} from
         today is {date.toDateString()}

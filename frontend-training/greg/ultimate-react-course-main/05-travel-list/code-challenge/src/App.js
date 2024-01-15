@@ -5,43 +5,50 @@ export default function App() {
   const [count, setCount] = useState(1);
   return (
     <div className={"app-container"}>
-      <Counter type={"Step"} />
+      <Step />
       <Counter type={"Count"} />
       <DisplayDate />
+      <ResetButton />
     </div>
   );
 
-  function minusType(type) {
-    if (type.toLowerCase() === "step") {
-      if (step <= 1) return;
-      setStep((s) => s - 1);
-    } else {
-      setCount((s) => s - 1);
-    }
+  function minusCount() {
+    setCount((s) => s - 1);
   }
 
-  function addType(type) {
-    type.toLowerCase() === "step"
-      ? setStep((s) => s + 1)
-      : setCount((s) => s + 1);
+  function addCount() {
+    setCount((s) => s + 1);
   }
 
-  function Counter({ type }) {
+  function Step() {
+    return (
+      <div className="counter-container">
+        <input
+          type={"range"}
+          min={0}
+          max={10}
+          value={step}
+          onChange={(e) => setStep(Number(e.target.value))}
+        />
+        {step}
+      </div>
+    );
+  }
+
+  function Counter() {
     return (
       <div className={"counter-container"}>
         <button
           onClick={() => {
-            minusType(type);
+            minusCount();
           }}
         >
           -
         </button>
-        <div>
-          {type}: {type.toLowerCase() === "count" ? count : step}
-        </div>
+        <input type="text" value={step * count} readOnly />
         <button
           onClick={() => {
-            addType(type);
+            addCount();
           }}
         >
           +
@@ -67,5 +74,22 @@ export default function App() {
         </div>
       );
     }
+  }
+
+  function ResetButton() {
+    return step !== 1 || count !== 1 ? (
+      <div>
+        <button
+          onClick={() => {
+            setStep(1);
+            setCount(1);
+          }}
+        >
+          Reset
+        </button>
+      </div>
+    ) : (
+      ""
+    );
   }
 }

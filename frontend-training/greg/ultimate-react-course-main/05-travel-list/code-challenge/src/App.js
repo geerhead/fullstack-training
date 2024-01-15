@@ -27,8 +27,10 @@ export default function App() {
           type={"range"}
           min={0}
           max={10}
-          value={step}
-          onChange={(e) => setStep(Number(e.target.value))}
+          defaultValue={step}
+          onChange={(e) => {
+            setStep(Number(e.target.value));
+          }}
         />
         {step}
       </div>
@@ -45,7 +47,7 @@ export default function App() {
         >
           -
         </button>
-        <input type="text" value={step * count} readOnly />
+        <input type="text" value={count} readOnly />
         <button
           onClick={() => {
             addCount();

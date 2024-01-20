@@ -1,4 +1,4 @@
-export default function BillForm({ billCost, handleBillCost }) {
+export default function BillForm({ billCost, handleBillCost, display }) {
   return (
     <div className="bill">
       <label>How much was the bill? </label>

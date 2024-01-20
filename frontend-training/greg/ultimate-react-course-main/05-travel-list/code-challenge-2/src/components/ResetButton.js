@@ -2,6 +2,7 @@ export default function ResetButton({
   handleCost,
   handleService,
   handleFriendService,
+  onDisplay,
 }) {
   function resetAll() {
     handleCost("");
@@ -10,7 +11,10 @@ export default function ResetButton({
   }
 
   return (
-    <div className={"reset-button--container"}>
+    <div
+      style={onDisplay ? { display: "none" } : {}}
+      className={"reset-button--container"}
+    >
       <button onClick={resetAll}>Reset</button>
     </div>
   );

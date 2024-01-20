@@ -9,6 +9,7 @@ export default function App() {
   const [billCost, setBillCost] = useState("");
   const [service, setService] = useState(0);
   const [friendService, setFriendService] = useState(0);
+  const isDisplayed = billCost === "" && service === 0 && friendService === 0;
 
   return (
     <div className="App">
@@ -27,6 +28,7 @@ export default function App() {
         handleCost={setBillCost}
         handleService={setService}
         handleFriendService={setFriendService}
+        onDisplay={isDisplayed ? "none" : ""}
       />
     </div>
   );

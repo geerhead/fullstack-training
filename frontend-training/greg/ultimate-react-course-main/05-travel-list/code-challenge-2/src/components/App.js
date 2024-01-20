@@ -5,7 +5,7 @@ import ServiceForm from "./ServiceForm";
 import { useState } from "react";
 
 export default function App() {
-  const [billCost, setBillCost] = useState(null);
+  const [billCost, setBillCost] = useState(0);
   const [service, setService] = useState(0.1);
   const [friendService, setFriendService] = useState(0.1);
 

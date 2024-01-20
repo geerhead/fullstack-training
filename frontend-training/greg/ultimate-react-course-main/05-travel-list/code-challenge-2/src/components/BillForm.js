@@ -7,6 +7,7 @@ export default function BillForm({ billCost, handleBillCost, display }) {
         placeholder="Bill value"
         value={billCost}
         onChange={(e) => {
+          if (!Number(e.target.value)) return;
           handleBillCost(Number(e.target.value));
         }}
       />

@@ -1,22 +1,30 @@
 import { useState } from "react";
 
-export default function AccordionItem({ num, text, title }) {
-  const [selected, setSelected] = useState(false);
+export default function AccordionItem({
+  num,
+  text,
+  title,
+  curOpen,
+  onOpen,
+  children,
+}) {
+  // const [selected, setSelected] = useState(false);
+  const isOpen = num === curOpen;
 
   function toggleSelect() {
-    setSelected(!selected);
+    onOpen(isOpen ? null : num);
   }
 
   return (
-    <div className={selected ? "open item" : "item"} onClick={toggleSelect}>
+    <div className={isOpen ? "open item" : "item"} onClick={toggleSelect}>
       <p className="number">{num + 1}</p>
       <p className="title">{title}</p>
-      <p>{selected ? "-" : "+"}</p>
+      <p>{isOpen ? "-" : "+"}</p>
       <div
         className="content-box"
-        style={selected ? { display: "flex" } : { display: "none" }}
+        style={isOpen ? { display: "flex" } : { display: "none" }}
       >
-        <ul>{text}</ul>
+        <ul>{children}</ul>
       </div>
     </div>
   );

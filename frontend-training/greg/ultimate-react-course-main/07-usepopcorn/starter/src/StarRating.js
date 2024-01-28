@@ -17,7 +17,7 @@ export default function StarRating({
   className = "",
   messages = [],
   defaultRating = 0,
-  onRatingChange,
+  onRatingChange = () => console.log("hi"),
 }) {
   const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);

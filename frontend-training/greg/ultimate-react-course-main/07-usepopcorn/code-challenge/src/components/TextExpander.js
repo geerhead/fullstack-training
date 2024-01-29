@@ -6,16 +6,16 @@ export default function TextExpander({
   collapsedNumWords = children.length,
   collapseButtonText = "Collapse text",
   expandButtonText = "Show text",
-  expanded,
+  expanded = false,
 }) {
   const [isCollapsed, setIsCollapsed] = useState(
-    expanded ? expanded : collapsedNumWords < children.length
+    expanded ? !expanded : collapsedNumWords < children.length
   );
 
   return (
     <>
       <div className="box">
-        {isCollapsed ? children.slice(0, -collapsedNumWords) : children}
+        {isCollapsed ? children.slice(0, -collapsedNumWords) + "..." : children}
         {collapsedNumWords === children.length ? (
           ""
         ) : (
@@ -40,7 +40,7 @@ function Button({
   onToggleCollapse,
 }) {
   return (
-    <div>
+    <div style={{ display: "inline" }}>
       <button
         style={{ color: buttonColor }}
         onClick={() => onToggleCollapse(!isCollapsed)}

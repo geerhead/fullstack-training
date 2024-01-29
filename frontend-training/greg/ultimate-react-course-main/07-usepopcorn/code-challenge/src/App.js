@@ -13,7 +13,7 @@ export default function App() {
       </TextExpander>
 
       <TextExpander
-        collapsedNumWords={20}
+        collapsedNumWords={200}
         expandButtonText="Show text"
         collapseButtonText="Collapse text"
         buttonColor="#ff6622"

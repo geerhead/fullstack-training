@@ -314,6 +314,23 @@ body {
     background-color: var(--color-primary-light);
 }
 
+
+.btn-remove {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    border: none;
+    border-radius: 10rem;
+    font-size: 1.4rem;
+    padding: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-remove:hover {
+    background-color: var(--color-primary-light);
+}
+
 .seconds {
     background-color: var(--color-background-100);
     width: 8rem;

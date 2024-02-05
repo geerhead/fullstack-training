@@ -84,15 +84,17 @@ export default function App() {
   }
 
   function handleAddWatched(movie) {
-    if (watched.some((e) => e.imdbID === movie.imdbID)) return;
+    if (watched.some((watchedMovie) => watchedMovie.imdbID === movie.imdbID))
+      return;
     setWatched((watched) => [...watched, movie]);
     handleCloseMovie();
   }
 
-  function handleRemoveWatched() {
-    setWatched(
-      watched.filter((watchedMovie) => watchedMovie.imdbID === selectedId)
+  function handleRemoveWatched(movie) {
+    const newWatchedList = watched.filter(
+      (watchedMovie) => watchedMovie.imdbID !== movie.imdbID
     );
+    setWatched(newWatchedList);
     handleCloseMovie();
   }
 
@@ -147,6 +149,7 @@ export default function App() {
               onCloseMovie={handleCloseMovie}
               onAddWatched={handleAddWatched}
               onRemoveWatched={handleRemoveWatched}
+              watched={watched}
             />
           ) : (
             <>
@@ -297,6 +300,10 @@ function MovieDetails({
     Genre: genre,
   } = movie;
 
+  const alreadyWatched = watched?.some(
+    (watchedMovie) => watchedMovie.imdbID === movie.imdbID
+  );
+
   function handleAdd() {
     const newWatchedMovie = {
       imdbID: selectedId,
@@ -305,7 +312,9 @@ function MovieDetails({
       poster,
       imdbRating: Number(imdbRating),
       runtime: Number(runtime.split(" ").at(0)),
+      userRating,
     };
+    if (!newWatchedMovie.userRating) return;
     onAddWatched(newWatchedMovie);
   }
 
@@ -348,16 +357,26 @@ function MovieDetails({
           </header>
 
           <section>
-            <StarRating maxRating={10} size={24} onSetRating={setUserRating} />
-            {watched?.some(
-              (watchedMovie) => watchedMovie.imdbID === selectedId
-            ) ? (
-              <button className="btn-remove" onClick={onRemoveWatched}>
+            <StarRating
+              maxRating={10}
+              size={24}
+              onSetRating={setUserRating}
+              defaultRating={
+                watched.find((r) => r.imdbID === selectedId)?.userRating
+              }
+            />
+            {alreadyWatched ? (
+              <button
+                className="btn-remove"
+                onClick={() => {
+                  onRemoveWatched(movie);
+                }}
+              >
                 - Remove from list
               </button>
             ) : (
               <button className="btn-add" onClick={handleAdd}>
-                + Add to list
+                {"+ Add to list"}
               </button>
             )}
             <p>
@@ -376,6 +395,7 @@ function WatchedSummary({ watched }) {
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
   const avgRuntime = average(watched.map((movie) => movie.runtime));
+
   return (
     <div className="summary">
       <h2>Movies you watched</h2>

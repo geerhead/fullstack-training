@@ -54,7 +54,7 @@ const average = (arr) =>
 const KEY = "29ec914e";
 
 export default function App() {
-  const [query, setQuery] = useState("inception");
+  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -98,6 +98,8 @@ export default function App() {
     handleCloseMovie();
   }
 
+
+
   useEffect(
     function () {
       const controller = new AbortController();
@@ -129,6 +131,7 @@ export default function App() {
         setError("");
         return;
       }
+      handleCloseMovie();
       fetchMovies();
       return function(){
         controller.abort()
@@ -327,6 +330,20 @@ function MovieDetails({
     if (!newWatchedMovie.userRating) return;
     onAddWatched(newWatchedMovie);
   }
+
+
+  useEffect(() => {
+
+    function callback(e){
+        if (e.key === 'Escape') {
+          onCloseMovie()
+      }
+    }
+    document.addEventListener('keydown', callback)
+    return function(){
+      document.removeEventListener('keydown', callback);
+    }
+  }, [onCloseMovie]);
 
   useEffect(() => {
     async function getMovieDetails() {

@@ -18,7 +18,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "json-server --watch data/questions.json -p 8000"
-
   },
   "eslintConfig": {
     "extends": [

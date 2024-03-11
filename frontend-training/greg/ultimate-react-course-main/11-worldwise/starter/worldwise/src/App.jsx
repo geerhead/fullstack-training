@@ -10,19 +10,16 @@ import Pricing from "../pages/Pricing.jsx";
 import Product from "../pages/Product.jsx";
 
 
-
-
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={"/"} element={<Homepage />}></Route>
+        <Route index element={<Homepage />}></Route>
         <Route path="product" element={<Product />} />
         <Route path={"pricing"} element={<Pricing />}></Route>
         <Route path={"app"} element={<AppLayout />}>
-          {/*<Route path={"cities"} element={<CityList />}/>*/}
+          <Route index element={<p>List of cities</p>}/>
           <Route path={"cities"} element={ <p>City List</p>}/>
-          {/*<Route path={"countries"} element={<CountryList />}/>*/}
           <Route path={"countries"} element={<p>Country List</p>}/>
           <Route path={"form"} element={<Form />}/>
         </Route>

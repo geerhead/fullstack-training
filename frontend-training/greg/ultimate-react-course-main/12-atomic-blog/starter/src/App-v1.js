@@ -1,6 +1,5 @@
 import {createContext, useContext, useEffect, useState} from "react";
 import { faker } from "@faker-js/faker";
-import {PostProvider, PostContext} from "./PostContext";
 
 function createRandomPost() {
   return {
@@ -10,7 +9,7 @@ function createRandomPost() {
 }
 
 function App() {
-    const [isFakeDark, setIsFakeDark] = useState(false);
+
 
   // Whenever `isFakeDark` changes, we toggle the `fake-dark-mode` class on the HTML element (see in "Elements" dev tool).
   useEffect(
@@ -19,30 +18,36 @@ function App() {
     },
     [isFakeDark]
   );
- // 2 PROVIDE VALUE TO CHILDREN PROPS
 
   return (
-  <PostProvider>
-    <section>
-      <button
-        onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
-        className="btn-fake-dark-mode"
-      >
-        {isFakeDark ? "☀️" : "🌙"}
-      </button>
+      //2 Provide value to child components
+      <PostContext.Provider value={{
+          posts: searchedPosts,
+          onAddPost: handleAddPost,
+          onClearPosts: handleClearPosts,
+          searchQuery,
+          setSearchQuery,
+      }}>
+        <section>
+          <button
+            onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
+            className="btn-fake-dark-mode"
+          >
+            {isFakeDark ? "☀️" : "🌙"}
+          </button>
 
-      <Header/>
-      <Main posts={searchedPosts} onAddPost={handleAddPost} />
-      <Archive onAddPost={handleAddPost} />
-      <Footer />
-    </section>
-  </PostProvider>
+          <Header/>
+          <Main posts={searchedPosts} onAddPost={handleAddPost} />
+          <Archive onAddPost={handleAddPost} />
+          <Footer />
+        </section>
+      </PostContext.Provider>
   );
 }
 
 function Header() {
     //3 Consuming the context value
-    const { onClearPosts} = useContext(PostContext);
+    const {onClearPosts} = useContext(PostContext)
   return (
     <header>
       <h1>

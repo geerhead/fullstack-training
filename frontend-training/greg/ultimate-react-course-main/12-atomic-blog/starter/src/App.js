@@ -20,7 +20,6 @@ function App() {
     [isFakeDark]
   );
  // 2 PROVIDE VALUE TO CHILDREN PROPS
-
   return (
   <PostProvider>
     <section>
@@ -32,8 +31,8 @@ function App() {
       </button>
 
       <Header/>
-      <Main posts={searchedPosts} onAddPost={handleAddPost} />
-      <Archive onAddPost={handleAddPost} />
+      <Main/>
+      <Archive/>
       <Footer />
     </section>
   </PostProvider>
@@ -42,7 +41,7 @@ function App() {
 
 function Header() {
     //3 Consuming the context value
-    const { onClearPosts} = useContext(PostContext);
+    const {onClearPosts} = useContext(PostContext)
   return (
     <header>
       <h1>

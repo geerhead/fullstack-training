@@ -6,7 +6,7 @@ import {useCities} from "../contexts/CitiesContext.jsx";
 
 function Map() {
     const navigate = useNavigate()
-    const {cities} = useCities();
+    const { cities } = useCities();
     const [searchParams, setSearchParams] = useSearchParams();
     const [mapPosition, setMapPosition] = useState([40,0])
     const lat = searchParams.get('lat');
@@ -22,11 +22,12 @@ function Map() {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
                 />
-                {cities.map((city) => (
-                    <Marker position={[city.position.lat,city.position.lng]} key={city.id} />
-                    <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                    </Popup>
+                {cities.map((city) =>
+                    (
+                    <Marker position={[city.position.lat,city.position.lng]} key={city.id} >
+                        <Popup>
+                            A pretty CSS3 popup. <br /> Easily customizable.
+                        </Popup>
                     </Marker>
                     ))
                     }

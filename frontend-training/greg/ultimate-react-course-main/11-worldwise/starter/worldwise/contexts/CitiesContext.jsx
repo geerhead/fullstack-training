@@ -52,10 +52,12 @@ function CitiesProvider({ children }) {
     )
 }
 
+
 function useCities() {
     const context = useContext(CitiesContext);
-    if (context === undefined) throw new Error("CitiesContext was used outside of the CitiesProvider")
-    return context
+    if (context === undefined)
+        throw new Error("CitiesContext was used outside the CitiesProvider");
+    return context;
 }
 
-export {CitiesProvider, useCities}
+export { CitiesProvider, useCities };
